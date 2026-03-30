@@ -74,9 +74,14 @@ export default function App() {
             </div>
 
             {/* Logo */}
-            {/* INSTRUÇÃO: Substitua a div abaixo por uma tag <img src="Fundo Calmaria_Logo_Noriah.svg" alt="Noriah" /> */}
+            {/* INSTRUÇÃO: Substitua a div abaixo por uma tag <img src="Fundo_Calmaria_Logo_Noriah.svg" alt="Noriah" /> */}
             <div className="flex-shrink-0 flex flex-col items-center justify-center flex-1 md:flex-none cursor-pointer">
-              <img src="Fundo_Calmaria_Logo_Noriah.svg" alt="Noriah" className="h-12 md:h-16 w-auto object-contain" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
+              <img 
+                src="Fundo_Calmaria_Logo_Noriah.svg" 
+                alt="Noriah" 
+                className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_0.8px_rgba(31,54,76,0.8)]" 
+                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} 
+              />
               <div style={{ display: 'none' }} className="flex-col items-center justify-center">
                 <h1 className="font-serif text-3xl md:text-4xl italic tracking-wide" style={{ color: colors.azulNoite }}>
                   Noriah
@@ -295,7 +300,7 @@ export default function App() {
             <div className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1611085583191-a3b13b844297?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1629224316170-f61cc3a596e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                   alt="Argola Torcida Clássica" 
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
@@ -423,7 +428,7 @@ export default function App() {
                 <img 
                   src="Fundo_Azul_Noite_Logo_Noriah.svg" 
                   alt="Noriah Semijoias" 
-                  className="h-24 md:h-32 w-auto object-contain"
+                  className="h-24 md:h-32 w-auto object-contain drop-shadow-[0_0_0.8px_rgba(250,245,233,0.8)]"
                 />
               </div>
               <p className="text-sm opacity-80 mb-6 font-light">
