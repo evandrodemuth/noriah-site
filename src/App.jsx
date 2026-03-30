@@ -76,7 +76,7 @@ export default function App() {
             {/* Logo */}
             {/* INSTRUÇÃO: Substitua a div abaixo por uma tag <img src="Fundo Calmaria_Logo_Noriah.svg" alt="Noriah" /> */}
             <div className="flex-shrink-0 flex flex-col items-center justify-center flex-1 md:flex-none cursor-pointer">
-              <img src="/Fundo Calmaria_Logo_Noriah.svg" alt="Noriah" className="h-12 md:h-16 w-auto object-contain" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
+              <img src="Fundo_Calmaria_Logo_Noriah.svg" alt="Noriah" className="h-12 md:h-16 w-auto object-contain" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
               <div style={{ display: 'none' }} className="flex-col items-center justify-center">
                 <h1 className="font-serif text-3xl md:text-4xl italic tracking-wide" style={{ color: colors.azulNoite }}>
                   Noriah
@@ -421,7 +421,7 @@ export default function App() {
             <div className="md:col-span-1">
               <div className="flex flex-col items-start cursor-pointer mb-6">
                 <img 
-                  src="/Fundo Azul Noite_Logo_Noriah.svg" 
+                  src="Fundo_Azul_Noite_Logo_Noriah.svg" 
                   alt="Noriah Semijoias" 
                   className="h-24 md:h-32 w-auto object-contain"
                 />
