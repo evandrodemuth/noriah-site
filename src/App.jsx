@@ -300,7 +300,7 @@ export default function App() {
             <div className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1629224316170-f61cc3a596e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="argola_torcida_classica.jpg" 
                   alt="Argola Torcida Clássica" 
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
