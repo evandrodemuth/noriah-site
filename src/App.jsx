@@ -499,9 +499,9 @@ export default function App() {
 
           <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-60 font-light" style={{ borderColor: 'rgba(250, 245, 233, 0.1)' }}>
             <p>&copy; {new Date().getFullYear()} Noriah Semijoias. Todos os direitos reservados.</p>
-            <div className="mt-4 md:mt-0">
-              CNPJ: 00.000.000/0001-00 | Brasil
-            </div>
+            <a href="mailto:contato@noriahsemijoias.com.br" className="mt-2 md:mt-0 hover:opacity-100 transition-opacity">
+              contato@noriahsemijoias.com.br
+            </a>
           </div>
         </div>
       </footer>
