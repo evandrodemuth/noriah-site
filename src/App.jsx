@@ -101,17 +101,17 @@ export default function App() {
 
   const heroSlides = [
     {
-      image: "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: "fotos/COLAR RIVEIRA_RO.jpg",
       title: "A elegância que ilumina os seus dias.",
       subtitle: "Nova Coleção Alvorecer"
     },
     {
-      image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: "fotos/CONJUNTO CITRINO.jpg",
       title: "Detalhes que contam a sua história.",
       subtitle: "Joias em Ouro 18k"
     },
     {
-      image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      image: "fotos/BRACELETE RIVEIRA COR_RO.jpg",
       title: "Sinta a exclusividade em cada peça.",
       subtitle: "Design Atemporal"
     }
@@ -220,7 +220,7 @@ export default function App() {
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
             <img 
-              src={slide.image} 
+              src={import.meta.env.BASE_URL + encodeURI(slide.image)} 
               alt={slide.title} 
               className="w-full h-full object-cover object-center"
             />
