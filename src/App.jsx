@@ -97,6 +97,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCategory, setActiveCategory] = useState('TODOS');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const heroSlides = [
     {
@@ -313,48 +314,33 @@ export default function App() {
             <div className="w-24 h-1 mx-auto" style={{ backgroundColor: colors.amareloAlvorecer }}></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card Colares */}
-            <div className="group relative h-96 overflow-hidden cursor-pointer rounded-3xl">
-              <img 
-                src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Colares" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
-              <div className="absolute bottom-8 left-8">
-                <h4 className="text-white text-2xl font-serif italic mb-2">Colares</h4>
-                <span className="text-white text-sm tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all">Ver produtos</span>
-              </div>
-            </div>
-
-            {/* Card Brincos */}
-            <div className="group relative h-96 overflow-hidden cursor-pointer rounded-3xl">
-              <img 
-                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Brincos" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
-              <div className="absolute bottom-8 left-8">
-                <h4 className="text-white text-2xl font-serif italic mb-2">Brincos</h4>
-                <span className="text-white text-sm tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all">Ver produtos</span>
-              </div>
-            </div>
-
-            {/* Card Anéis */}
-            <div className="group relative h-96 overflow-hidden cursor-pointer rounded-3xl">
-              <img 
-                src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Anéis" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
-              <div className="absolute bottom-8 left-8">
-                <h4 className="text-white text-2xl font-serif italic mb-2">Anéis</h4>
-                <span className="text-white text-sm tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all">Ver produtos</span>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              { label: 'Colares', cat: 'COLAR', img: 'fotos/COLAR RIVEIRA_RO.jpg' },
+              { label: 'Brincos', cat: 'BRINCO', img: 'fotos/BRINCO OVAL COM ZIRCONIA MEIO.jpg' },
+              { label: 'Anéis', cat: 'ANEL', img: 'fotos/ANEL SOLITARIO_OU.jpg' },
+              { label: 'Braceletes', cat: 'BRACELETE', img: 'fotos/BRACELETE RIVEIRA COR_RO.jpg' },
+              { label: 'Pulseiras', cat: 'PULSEIRA', img: 'fotos/PULSEIRA FECHO CRAVEJADA.jpg' },
+              { label: 'Conjuntos', cat: 'CONJUNTO', img: 'fotos/CONJUNTO CITRINO.jpg' },
+            ].map(({ label, cat, img }) => (
+              <a
+                key={cat}
+                href="#catalogo"
+                onClick={() => setActiveCategory(cat)}
+                className="group relative h-96 overflow-hidden cursor-pointer rounded-3xl block"
+              >
+                <img
+                  src={import.meta.env.BASE_URL + encodeURI(img)}
+                  alt={label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500"></div>
+                <div className="absolute bottom-8 left-8">
+                  <h4 className="text-white text-2xl font-serif italic mb-2">{label}</h4>
+                  <span className="text-white text-sm tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all">Ver produtos</span>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -381,11 +367,26 @@ export default function App() {
                 </button>
               ))}
             </div>
+            {/* Busca por nome */}
+            <div className="mt-4 flex justify-center">
+              <div className="relative w-full max-w-sm">
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 opacity-40" style={{ color: colors.azulNoite }} />
+                <input
+                  type="text"
+                  placeholder="Buscar produto..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-full border focus:outline-none focus:border-[#1F364C] transition-colors"
+                  style={{ borderColor: colors.azulNoite + '30', color: colors.azulNoite }}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {products
-              .filter(p => activeCategory === 'TODOS' || p.category === activeCategory)
+              .filter(p => (activeCategory === 'TODOS' || p.category === activeCategory)
+                && p.name.toLowerCase().includes(searchQuery.toLowerCase()))
               .map(product => (
                 <ProductCard key={product.id} product={product} colors={colors} />
               ))
