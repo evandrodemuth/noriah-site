@@ -1,9 +1,102 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Search, Menu, X, Instagram, Diamond, ShieldCheck, Sparkles, Star, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
+const WHATSAPP_NUMBER = '5500000000000'; // Substitua pelo número real
+
+const products = [
+  { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 124.42, image: '/fotos/COLAR CORDÃO BAIANO_RO.jpg' },
+  { id: 'CO002OU', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ouro', price: 136.86, image: '/fotos/COLAR CORDAO BAIANO_OU.jpg' },
+  { id: 'CO003OU', category: 'COLAR', name: 'Chocker Coração', bath: 'Ouro', price: 169.86, image: '/fotos/COLAR CORRENTE COR_OU.jpg' },
+  { id: 'CO004OU', category: 'COLAR', name: 'Chocker', bath: 'Ouro', price: 124.42, image: '/fotos/BRINCO COR MAE_OU.JPG' },
+  { id: 'CO005RO', category: 'COLAR', name: 'Chocker Fita', bath: 'Ródio', price: 114.42, image: '/fotos/COLAR FITA_ROOU2.JPG' },
+  { id: 'CO006RO', category: 'COLAR', name: 'Colar Riviera', bath: 'Ródio', price: 308.03, image: '/fotos/COLAR RIVEIRA_RO.jpg' },
+  { id: 'CO008RO', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ródio', price: 276.42, image: '/fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg' },
+  { id: 'CO008OU', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ouro', price: 246.42, image: '/fotos/COLAR FECHO ZIRCONIA MAE_OU.jpg' },
+  { id: 'CO009OU', category: 'COLAR', name: 'Colar Grumet', bath: 'Ouro', price: 180.42, image: '/fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'CO010OU', category: 'COLAR', name: 'Chocker Pérola Orgânica', bath: 'Ouro', price: 125.86, image: '/fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'CO011RO', category: 'COLAR', name: 'Colar Coração', bath: 'Ródio', price: 136.42, image: '/fotos/COLAR COR_RO.jpg' },
+  { id: 'CO012OU', category: 'COLAR', name: 'Colar Pérola Orgânica', bath: 'Ouro', price: 142.42, image: '/fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'BRO002OU', category: 'BRINCO', name: 'Brinco Cravejado Zircônia', bath: 'Ouro', price: 136.86, image: '/fotos/BRINCO MEIA ARGOLA ZIRCONIA_OU.jpg' },
+  { id: 'BRO003OU', category: 'BRINCO', name: 'Brinco', bath: 'Ouro', price: 110.46, image: '/fotos/BRINCO COR MAE_OU.JPG' },
+  { id: 'BRO003RO', category: 'BRINCO', name: 'Brinco', bath: 'Ródio', price: 121.46, image: '/fotos/BRINCO COR MAE_RO.jpg' },
+  { id: 'BRO004RO', category: 'BRINCO', name: 'Trio Argola', bath: 'Ródio', price: 120.42, image: '/fotos/BRINCO TRIO ARGOLA_RO.jpg' },
+  { id: 'BRO004OU', category: 'BRINCO', name: 'Trio Argola', bath: 'Ouro', price: 110.42, image: '/fotos/BRINCO TRIO ARGOLA_OU.jpg' },
+  { id: 'BRO005RO', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ródio', price: 124.42, image: '/fotos/BRINCO NÓ_ROOU.jpg' },
+  { id: 'BRO005OU', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ouro', price: 114.42, image: '/fotos/BRINCO NÓ_ROOU.jpg' },
+  { id: 'BRO006OU', category: 'BRINCO', name: 'Brinco Orgânico', bath: 'Ouro', price: 98.42, image: '/fotos/BRINCO ORGANICO_OU.jpg' },
+  { id: 'BRO007OU', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ouro', price: 108.42, image: '/fotos/BRINCO GOTA_OU.jpg' },
+  { id: 'BRO008RO', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ródio', price: 77.46, image: '/fotos/BRINCO GOTA2_RO.jpg' },
+  { id: 'BRO009OU', category: 'BRINCO', name: 'Brinco Cravejado', bath: 'Ouro', price: 125.53, image: '/fotos/BRINCO MEIA ARGOLA_OU.jpg' },
+  { id: 'BRO010OU', category: 'BRINCO', name: 'Argola Cravejada', bath: 'Ouro', price: 130.26, image: '/fotos/BRINCO ARGOLA_OU.jpg' },
+  { id: 'BRO011OU', category: 'BRINCO', name: 'Brinco Oval Cravejado', bath: 'Ouro', price: 214.42, image: '/fotos/BRINCO OVAL COM ZIRCONIA MEIO.jpg' },
+  { id: 'BRO012OU', category: 'BRINCO', name: 'Argola Quadrada', bath: 'Ouro', price: 125.86, image: '/fotos/BRINCO QUADRADO_OU.jpg' },
+  { id: 'BRO013OU', category: 'BRINCO', name: 'Brinco Cristal', bath: 'Ouro', price: 134.42, image: '/fotos/BRINCO CRISTAL_OU.jpg' },
+  { id: 'BRO014RO', category: 'BRINCO', name: 'Brinco Mini', bath: 'Ródio', price: 68.42, image: '/fotos/BRINCO COR PEQ_RO.jpg' },
+  { id: 'BRO015RO', category: 'BRINCO', name: 'Aircuf Coração', bath: 'Ródio', price: 86.42, image: '/fotos/BRINCO AIRCUF COR_RO.jpg' },
+  { id: 'BRO016RO', category: 'BRINCO', name: 'Aircuf Bola', bath: 'Ródio', price: 136.42, image: '/fotos/BRINCO AIRCUF BOLA_RO.jpg' },
+  { id: 'BRO017OU', category: 'BRINCO', name: 'Argola Pérola Orgânica', bath: 'Ródio', price: 143.03, image: '/fotos/BRINCO ARGOLA PEROLA ORGANICA_OU.jpg' },
+  { id: 'BRO018RO', category: 'BRINCO', name: 'Brinco Pequeno', bath: 'Ródio', price: 52.42, image: '/fotos/BRINCO COR MEDIO_RO.jpg' },
+  { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: '/fotos/BRINCO ZIRCONIA_RO.jpg' },
+  { id: 'BRO021OU', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: '/fotos/BRINCO PEROLA CASCATA.jpg' },
+  { id: 'BRA002RO', category: 'BRACELETE', name: 'Bracelete Liso', bath: 'Ródio', price: 174.42, image: '/fotos/BRACELETE LARGO OND_RO.jpg' },
+  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: '/fotos/BRACELETE NÓ_OU.JPG' },
+  { id: 'BRA004OU', category: 'BRACELETE', name: 'Aparador Liso', bath: 'Ouro', price: 124.42, image: '/fotos/BRACELETE APARA_OU.jpg' },
+  { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: '/fotos/BRACELETE LARGO_OU.jpg' },
+  { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: '/fotos/BRACELETE ONDULADO_ROOU.jpg' },
+  { id: 'BRA006RO', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ródio', price: 124.42, image: '/fotos/BRACELETE ONDULADO_ROOU.jpg' },
+  { id: 'BRA007RO', category: 'BRACELETE', name: 'Bracelete Riviera Coração', bath: 'Ródio', price: 161.06, image: '/fotos/BRACELETE RIVEIRA COR_RO.jpg' },
+  { id: 'BRA008RO', category: 'BRACELETE', name: 'Bracelete Largo Ondulado', bath: 'Ródio', price: 184.42, image: '/fotos/BRACELETE GRANDE ONDULADO_RO.jpg' },
+  { id: 'AN003RO', category: 'ANEL', name: 'Regulável com Zircônia', bath: 'Ródio', price: 118.03, image: '/fotos/ANEL ZIRCONIA_ROOU.jpg' },
+  { id: 'AN003OU', category: 'ANEL', name: 'Regulável com Zircônia', bath: 'Ouro', price: 105.53, image: '/fotos/ANEL ZIRCONIA_ROOU.jpg' },
+  { id: 'AN005OU', category: 'ANEL', name: 'Regulável Liso', bath: 'Ouro', price: 98.42, image: '/fotos/ANEL REGULAVEL LISO_OU.jpg' },
+  { id: 'AN005RO', category: 'ANEL', name: 'Regulável Liso', bath: 'Ródio', price: 113.03, image: '/fotos/ANEL REGULAVEL_RO.jpg' },
+  { id: 'AN007OU', category: 'ANEL', name: 'Solitário Cristal', bath: 'Ouro', price: 123.03, image: '/fotos/ANEL SOLITARIO_OU.jpg' },
+  { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: '/fotos/ANEL CORAÇÃO_RO.jpg' },
+  { id: 'PUL001OU', category: 'PULSEIRA', name: '1 Pérola Orgânica', bath: 'Ouro', price: 74.42, image: '/fotos/PULSEIRA PEROLA UNICA_OU.jpg' },
+  { id: 'PUL002OU', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ouro', price: 214.42, image: '/fotos/PULSEIRA FECHO CRAVEJADA.jpg' },
+  { id: 'PUL002RO', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ródio', price: 236.42, image: '/fotos/PULSEIRA MAE_RO.jpg' },
+  { id: 'CJ002RO', category: 'CONJUNTO', name: 'Conj. Gota Cravejada', bath: 'Ródio', price: 138.42, image: '/fotos/CONJ GOTA CRAVEJADA.jpg' },
+  { id: 'CJ003OU', category: 'CONJUNTO', name: 'Citrino com Zircônia', bath: 'Ouro', price: 161.75, image: '/fotos/CONJUNTO CITRINO.jpg' },
+  { id: 'CJ004RO', category: 'CONJUNTO', name: 'Conj. Coração Zircônia', bath: 'Ródio', price: 124.42, image: '/fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
+  { id: 'CJ005RO', category: 'CONJUNTO', name: 'Conj. Coração Liso', bath: 'Ródio', price: 124.42, image: '/fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
+];
+
+const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA', 'CONJUNTO'];
+const CATEGORY_LABELS = { TODOS: 'Todos', COLAR: 'Colares', BRINCO: 'Brincos', BRACELETE: 'Braceletes', ANEL: 'Anéis', PULSEIRA: 'Pulseiras', CONJUNTO: 'Conjuntos' };
+
+function ProductCard({ product, colors }) {
+  const msg = encodeURIComponent(`Olá! Tenho interesse na peça: ${product.name} | Banho ${product.bath} | Cód. ${product.id}`);
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+  return (
+    <div className="group cursor-pointer">
+      <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-50 rounded-2xl">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=60'; }}
+        />
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-xs font-bold tracking-widest uppercase text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9] rounded"
+        >
+          Consultar Peça
+        </a>
+      </div>
+      <h5 className="font-serif text-base mb-1">{product.name}</h5>
+      <p className="text-xs opacity-60 mb-1">Banho {product.bath}</p>
+      <p className="font-semibold text-sm">R$ {product.price.toFixed(2).replace('.', ',')}</p>
+    </div>
+  );
+}
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeCategory, setActiveCategory] = useState('TODOS');
 
   const heroSlides = [
     {
@@ -146,12 +239,13 @@ export default function App() {
             <p className="text-lg text-white/90 mb-8 font-light max-w-md">
               Peças exclusivas banhadas a ouro 18k, desenhadas para realçar a sua beleza natural com sofisticação.
             </p>
-            <button 
-              className="px-8 py-3 text-sm tracking-widest uppercase font-semibold transition-all duration-300 hover:scale-105"
+            <a
+              href="#catalogo"
+              className="inline-block px-8 py-3 text-sm tracking-widest uppercase font-semibold transition-all duration-300 hover:scale-105"
               style={{ backgroundColor: colors.amareloAlvorecer, color: colors.azulNoite }}
             >
               Ver Catálogo
-            </button>
+            </a>
           </div>
         </div>
 
@@ -265,96 +359,37 @@ export default function App() {
         </div>
       </section>
 
-      {/* Destaques (Produtos) */}
-      <section className="py-20 bg-white">
+      {/* Catálogo */}
+      <section id="catalogo" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h3 className="text-3xl md:text-4xl font-serif italic mb-4" style={{ color: colors.azulNoite }}>Mais Desejados</h3>
-              <div className="w-16 h-1" style={{ backgroundColor: colors.amareloAlvorecer }}></div>
+          <div className="text-center mb-10">
+            <h3 className="text-3xl md:text-4xl font-serif italic mb-4" style={{ color: colors.azulNoite }}>Catálogo</h3>
+            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: colors.amareloAlvorecer }}></div>
+            {/* Filtros */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className="px-5 py-2 text-xs font-bold tracking-widest uppercase transition-all duration-200 rounded-full border"
+                  style={activeCategory === cat
+                    ? { backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer, borderColor: colors.azulNoite }
+                    : { backgroundColor: 'transparent', color: colors.azulNoite, borderColor: colors.azulNoite + '40' }
+                  }
+                >
+                  {CATEGORY_LABELS[cat]}
+                </button>
+              ))}
             </div>
-            <a href="#" className="hidden md:block text-sm font-bold tracking-widest uppercase hover:underline" style={{ color: colors.azulNoite }}>
-              Ver todos
-            </a>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Produto 1 */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Colar Esmeralda" 
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-sm font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9]">
-                  Consultar Peça
-                </button>
-              </div>
-              <h5 className="font-serif text-lg mb-1">Colar Ponto de Luz</h5>
-              <p className="text-sm opacity-70 mb-2">Banho Ouro 18k</p>
-              <p className="font-semibold">R$ 189,90</p>
-            </div>
-
-            {/* Produto 2 */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
-                <img 
-                  src="argola_torcida_classica.jpg" 
-                  alt="Argola Torcida Clássica" 
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2 left-2 px-2 py-1 text-[10px] font-bold tracking-wider uppercase text-[#1F364C]" style={{ backgroundColor: colors.amareloAlvorecer }}>
-                  Mais Desejado
-                </div>
-                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-sm font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9]">
-                  Consultar Peça
-                </button>
-              </div>
-              <h5 className="font-serif text-lg mb-1">Argola Torcida Clássica</h5>
-              <p className="text-sm opacity-70 mb-2">Banho Ouro 18k</p>
-              <p className="font-semibold">R$ 149,90</p>
-            </div>
-
-            {/* Produto 3 */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Anel Solitário" 
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-sm font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9]">
-                  Consultar Peça
-                </button>
-              </div>
-              <h5 className="font-serif text-lg mb-1">Anel Solitário Brilho</h5>
-              <p className="text-sm opacity-70 mb-2">Banho Ródio Branco</p>
-              <p className="font-semibold">R$ 129,90</p>
-            </div>
-
-            {/* Produto 4 */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-100 rounded-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Pulseira Rivieira" 
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <button className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-sm font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9]">
-                  Consultar Peça
-                </button>
-              </div>
-              <h5 className="font-serif text-lg mb-1">Pulseira Riviera</h5>
-              <p className="text-sm opacity-70 mb-2">Banho Ouro 18k</p>
-              <p className="font-semibold">R$ 259,90</p>
-            </div>
-          </div>
-          
-          <div className="mt-8 text-center md:hidden">
-             <a href="#" className="inline-block border-b-2 pb-1 text-sm font-bold tracking-widest uppercase" style={{ borderColor: colors.amareloAlvorecer, color: colors.azulNoite }}>
-              Ver toda a loja
-            </a>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products
+              .filter(p => activeCategory === 'TODOS' || p.category === activeCategory)
+              .map(product => (
+                <ProductCard key={product.id} product={product} colors={colors} />
+              ))
+            }
           </div>
         </div>
       </section>
