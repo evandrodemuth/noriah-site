@@ -111,7 +111,7 @@ export default function App() {
       subtitle: "Joias em Ouro 18k"
     },
     {
-      image: "fotos/BRACELETE RIVEIRA COR_RO.jpg",
+      image: "fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg",
       title: "Sinta a exclusividade em cada peça.",
       subtitle: "Design Atemporal"
     }
