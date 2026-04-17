@@ -12,10 +12,10 @@ const products = [
   { id: 'CO006RO', category: 'COLAR', name: 'Colar Riviera', bath: 'Ródio', price: 308.03, image: 'fotos/COLAR RIVEIRA_RO.jpg' },
   { id: 'CO008RO', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ródio', price: 276.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg' },
   { id: 'CO008OU', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ouro', price: 246.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_OU.jpg' },
-  { id: 'CO009OU', category: 'COLAR', name: 'Colar Grumet', bath: 'Ouro', price: 180.42, image: 'fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
-  { id: 'CO010OU', category: 'COLAR', name: 'Chocker Pérola Orgânica', bath: 'Ouro', price: 125.86, image: 'fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'CO009OU', category: 'COLAR', name: 'Colar Grumet', bath: 'Ouro', price: 180.42, image: 'fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'CO010OU', category: 'COLAR', name: 'Chocker Pérola Orgânica', bath: 'Ouro', price: 125.86, image: 'fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
   { id: 'CO011RO', category: 'COLAR', name: 'Colar Coração', bath: 'Ródio', price: 136.42, image: 'fotos/COLAR COR_RO.jpg' },
-  { id: 'CO012OU', category: 'COLAR', name: 'Colar Pérola Orgânica', bath: 'Ouro', price: 142.42, image: 'fotos/COLAR TRANÇADO E PEROLA_OU2.JPG' },
+  { id: 'CO012OU', category: 'COLAR', name: 'Colar Pérola Orgânica', bath: 'Ouro', price: 142.42, image: 'fotos/COLAR PEROLA ORGANICA UNICA_OU.jpg' },
   { id: 'BRO002OU', category: 'BRINCO', name: 'Brinco Cravejado Zircônia', bath: 'Ouro', price: 136.86, image: 'fotos/BRINCO MEIA ARGOLA ZIRCONIA_OU.jpg' },
   { id: 'BRO003OU', category: 'BRINCO', name: 'Brinco', bath: 'Ouro', price: 110.46, image: 'fotos/BRINCO COR MAE_OU.JPG' },
   { id: 'BRO003RO', category: 'BRINCO', name: 'Brinco', bath: 'Ródio', price: 121.46, image: 'fotos/BRINCO COR MAE_RO.jpg' },
@@ -64,16 +64,22 @@ const products = [
 const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA', 'CONJUNTO'];
 const CATEGORY_LABELS = { TODOS: 'Todos', COLAR: 'Colares', BRINCO: 'Brincos', BRACELETE: 'Braceletes', ANEL: 'Anéis', PULSEIRA: 'Pulseiras', CONJUNTO: 'Conjuntos' };
 
-function ProductCard({ product, colors }) {
-  const msg = encodeURIComponent(`Olá! Tenho interesse na peça: ${product.name} | Banho ${product.bath} | Cód. ${product.id}`);
+function ProductCard({ products, colors }) {
+  const mainProduct = products[0];
+  const hasMultiple = products.length > 1;
+  const uniqueNames = [...new Set(products.map(p => p.name))];
+  const displayName = uniqueNames.length === 1 ? uniqueNames[0] : (uniqueNames.length > 2 ? 'Mix de Peças' : uniqueNames.join(' & '));
+
+  const itemsString = products.map(p => `${p.name} (${p.bath}) - R$ ${p.price.toFixed(2)}`).join(' | ');
+  const msg = encodeURIComponent(`Olá! Tenho interesse na(s) peça(s): ${itemsString}`);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 
   return (
     <div className="group cursor-pointer">
       <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-50 rounded-2xl">
         <img
-          src={import.meta.env.BASE_URL + encodeURI(product.image)}
-          alt={product.name}
+          src={import.meta.env.BASE_URL + encodeURI(mainProduct.image)}
+          alt={displayName}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=60'; }}
         />
@@ -83,12 +89,23 @@ function ProductCard({ product, colors }) {
           rel="noopener noreferrer"
           className="absolute bottom-4 left-1/2 -translate-x-1/2 w-11/12 py-3 bg-white/90 text-[#1F364C] text-xs font-bold tracking-widest uppercase text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#1F364C] hover:text-[#FAF5E9] rounded"
         >
-          Consultar Peça
+          Consultar {hasMultiple ? 'Peças' : 'Peça'}
         </a>
       </div>
-      <h5 className="font-serif text-base mb-1">{product.name}</h5>
-      <p className="text-xs opacity-60 mb-1">Banho {product.bath}</p>
-      <p className="font-semibold text-sm">R$ {product.price.toFixed(2).replace('.', ',')}</p>
+      
+      <div className="space-y-2">
+        <h5 className="font-serif text-base leading-tight">{displayName}</h5>
+        <div className="space-y-1">
+          {products.map((p, idx) => (
+            <div key={idx} className="flex justify-between items-baseline gap-2 pb-1 border-b border-black/5 last:border-0">
+              <span className="text-[10px] uppercase tracking-wider opacity-60">
+                {hasMultiple && uniqueNames.length > 1 ? p.name.split(' ').pop() : ''} {p.bath}
+              </span>
+              <span className="font-semibold text-sm whitespace-nowrap">R$ {p.price.toFixed(2).replace('.', ',')}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -100,6 +117,8 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState(null); // 'success' | 'error' | 'loading'
+  const [isPolicyOpen, setIsPolicyOpen] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const heroSlides = [
     {
@@ -166,7 +185,7 @@ export default function App() {
             <div className="hidden md:flex space-x-8 items-center flex-1">
               <a href="#lancamentos" className="text-sm font-medium tracking-widest hover:text-[#FFD580] transition-colors uppercase">Lançamentos</a>
               <a href="#colecoes" className="text-sm font-medium tracking-widest hover:text-[#FFD580] transition-colors uppercase">Coleções</a>
-              <a href="#sobre" className="text-sm font-medium tracking-widest hover:text-[#FFD580] transition-colors uppercase">A Marca</a>
+              <button onClick={() => setIsHistoryOpen(true)} className="text-sm font-medium tracking-widest hover:text-[#FFD580] transition-colors uppercase">A Marca</button>
             </div>
 
             {/* Logo */}
@@ -207,7 +226,7 @@ export default function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center border-t border-[#1F364C]/10">
               <a href="#lancamentos" className="block px-3 py-2 text-base font-medium tracking-widest hover:text-[#FFD580] uppercase">Lançamentos</a>
               <a href="#colecoes" className="block px-3 py-2 text-base font-medium tracking-widest hover:text-[#FFD580] uppercase">Coleções</a>
-              <a href="#sobre" className="block px-3 py-2 text-base font-medium tracking-widest hover:text-[#FFD580] uppercase">A Marca</a>
+              <button onClick={() => { setIsHistoryOpen(true); setIsMobileMenuOpen(false); }} className="block px-3 py-2 text-base font-medium tracking-widest hover:text-[#FFD580] uppercase">A Marca</button>
             </div>
           </div>
         )}
@@ -291,8 +310,8 @@ export default function App() {
             </div>
             <div className="flex flex-col items-center text-center">
               <ShieldCheck size={32} className="mb-3" style={{ color: colors.amareloAlvorecer }} />
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-1">1 Ano de Garantia</h4>
-              <p className="text-xs opacity-70">Contra defeitos de fabricação</p>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-1">6 Meses de Garantia</h4>
+              <p className="text-xs opacity-70">No banho e defeitos</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <Sparkles size={32} className="mb-3" style={{ color: colors.amareloAlvorecer }} />
@@ -385,14 +404,16 @@ export default function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products
-              .filter(p => (activeCategory === 'TODOS' || p.category === activeCategory)
-                && p.name.toLowerCase().includes(searchQuery.toLowerCase()))
-              .map(product => (
-                <ProductCard key={product.id} product={product} colors={colors} />
-              ))
-            }
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+            {Object.values(products.reduce((acc, p) => {
+              if ((activeCategory === 'TODOS' || p.category === activeCategory) && p.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                if (!acc[p.image]) acc[p.image] = [];
+                acc[p.image].push(p);
+              }
+              return acc;
+            }, {})).map((group, idx) => (
+              <ProductCard key={idx} products={group} colors={colors} />
+            ))}
           </div>
         </div>
       </section>
@@ -415,9 +436,9 @@ export default function App() {
             <p className="mb-8 leading-relaxed font-light opacity-90">
               Cada peça é cuidadosamente desenhada e banhada com excelência para garantir não apenas beleza, mas durabilidade e conforto em todos os momentos da sua vida.
             </p>
-            <a href="#" className="inline-flex items-center uppercase tracking-widest text-sm font-bold hover:opacity-80 transition-opacity" style={{ color: colors.amareloAlvorecer }}>
+            <button onClick={() => setIsHistoryOpen(true)} className="inline-flex items-center uppercase tracking-widest text-sm font-bold hover:opacity-80 transition-opacity" style={{ color: colors.amareloAlvorecer }}>
               Conheça nossa história
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -506,9 +527,9 @@ export default function App() {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest mb-6" style={{ color: colors.amareloAlvorecer }}>Institucional</h4>
               <ul className="space-y-3 text-sm opacity-80 font-light">
-                <li><a href="#" className="hover:text-[#FFD580] transition-colors">Quem Somos</a></li>
-                <li><a href="#" className="hover:text-[#FFD580] transition-colors">Garantia e Cuidados</a></li>
-                <li><a href="#" className="hover:text-[#FFD580] transition-colors">Política de Trocas</a></li>
+                <li><button onClick={() => setIsHistoryOpen(true)} className="hover:text-[#FFD580] transition-colors">Quem Somos</button></li>
+                <li><button onClick={() => setIsPolicyOpen(true)} className="hover:text-[#FFD580] transition-colors">Garantia e Cuidados</button></li>
+                <li><button onClick={() => setIsPolicyOpen(true)} className="hover:text-[#FFD580] transition-colors">Política de Trocas</button></li>
               </ul>
             </div>
 
@@ -532,6 +553,155 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Policy Modal */}
+      {isPolicyOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-[2rem] shadow-2xl relative animate-slideUp">
+            <button 
+              onClick={() => setIsPolicyOpen(false)}
+              className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="p-8 md:p-12">
+              <h2 className="text-3xl font-serif italic mb-8" style={{ color: colors.azulNoite }}>Garantia, Trocas e Cuidados</h2>
+              
+              <div className="space-y-8 text-sm leading-relaxed text-[#1F364C]/80">
+                <section>
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-4 text-[#1F364C] border-b pb-2">Cuidados com sua Semijoia</h3>
+                  <p className="mb-4 font-medium italic">Para manter o brilho e a durabilidade da sua semijoia por muito mais tempo, recomendamos alguns cuidados simples:</p>
+                  <ul className="space-y-3">
+                    <li className="flex gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFD580] mt-1.5 shrink-0"></span>
+                      <span>Evite o contato com água, perfumes, cremes, produtos químicos e produtos de limpeza.</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFD580] mt-1.5 shrink-0"></span>
+                      <span>Retire as peças antes de tomar banho, entrar no mar ou piscina.</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-4 text-[#1F364C] border-b pb-2">Política de Trocas e Devoluções</h3>
+                  <p className="mb-4">Queremos que você tenha a melhor experiência com nossas semijoias. Caso precise trocar ou devolver algum produto, fique tranquila(o), é simples.</p>
+                </section>
+
+                <section>
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-3 text-[#1F364C]">Prazo para devolução ou troca</h3>
+                  <p>Você pode solicitar a troca ou devolução em até 7 dias após o recebimento do pedido, conforme o Código de Defesa do Consumidor.</p>
+                </section>
+
+                <section>
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-3 text-[#1F364C]">Condições do produto</h3>
+                  <p className="mb-3">Para realizar a troca ou devolução, o produto deve:</p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>Estar sem sinais de uso</li>
+                    <li>Estar na embalagem original</li>
+                    <li>Estar em perfeito estado</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-3 text-[#1F364C]">Garantia das peças</h3>
+                  <p className="mb-3">Nossas semijoias possuem <strong>6 meses de garantia no banho</strong>, contados a partir da data da compra.</p>
+                  <p className="mb-2">A garantia cobre defeitos de fabricação, como:</p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>Falhas no banho da peça</li>
+                    <li>Pedra solta ou faltando</li>
+                  </ul>
+                  <div className="mt-4 p-4 rounded-xl bg-[#FAF5E9] border border-[#1F364C]/5">
+                    <p className="font-semibold mb-1">A garantia não cobre:</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>Mau uso</li>
+                      <li>Arranhões</li>
+                    </ul>
+                  </div>
+                </section>
+
+                <section className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                  <h3 className="font-bold uppercase tracking-widest text-xs mb-4 text-[#1F364C]">Como solicitar</h3>
+                  <p className="mb-4">Em caso de Troca ou devolução, pedimos para entrar em contato através do email <a href="mailto:contato@noriahsemijoias.com.br" className="font-bold underline">contato@noriahsemijoias.com.br</a> com os dados abaixo:</p>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 font-mono text-xs space-y-2">
+                    <p><strong>Título:</strong> Defeito ou Troca ou Devolução (colocar o motivo correto)</p>
+                    <p><strong>Motivo:</strong> (ex: zircônia caiu)</p>
+                    <p><strong>Pedido:</strong></p>
+                    <p><strong>CPF:</strong></p>
+                    <p><strong>Nome:</strong></p>
+                    <p><strong>Cod produto:</strong></p>
+                    <p><strong>Foto do produto com defeito:</strong></p>
+                  </div>
+                  
+                  <p className="mt-4 text-xs italic opacity-60">Prazo de retorno em até 48h úteis.</p>
+                </section>
+              </div>
+              
+              <div className="mt-10 flex justify-center">
+                <button 
+                  onClick={() => setIsPolicyOpen(false)}
+                  className="px-10 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105"
+                  style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* History Modal */}
+      {isHistoryOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-[2rem] shadow-2xl relative animate-slideUp">
+            <button 
+              onClick={() => setIsHistoryOpen(false)}
+              className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="p-8 md:p-12">
+              <span className="block text-xs font-bold uppercase tracking-[0.3em] mb-4 text-[#FFD580]">Nossa História</span>
+              <h2 className="text-3xl md:text-4xl font-serif italic mb-8" style={{ color: colors.azulNoite }}>A Essência Noriah</h2>
+              
+              <div className="space-y-6 text-base leading-relaxed text-[#1F364C]/80 font-light">
+                <p>A Noriah Semijoias nasceu de uma transformação.</p>
+                
+                <p>Em um determinado momento da minha vida, escolhi pausar minha carreira para me dedicar ao que eu tinha de mais precioso: minha família, especialmente minha filha, que me ensinou e ainda me ensina sobre amor, força e propósito.</p>
+                
+                <p>Mas, como acontece com tantas pessoas, a vida trouxe um revés. Um inesperado divórcio marcou profundamente a minha trajetória e me levou a um tempo de dor e reconstrução.</p>
+                
+                <p className="font-medium text-[#1F364C]">Foi nesse processo que entendi algo que mudou tudo: o meu valor nunca esteve nas mãos de ninguém, sempre esteve em quem Deus diz que eu sou.</p>
+                
+                <p>Entre lágrimas e orações, encontrei em Jesus direção, amor e um novo significado para a minha história. E foi assim que a Noriah nasceu.</p>
+                
+                <div className="py-8 px-6 bg-[#FAF5E9] rounded-3xl border-l-4 border-[#FFD580] my-8 italic">
+                  <p className="mb-4">"Mulher virtuosa, quem a achará? O seu valor muito excede ao de finas joias."</p>
+                  <p className="text-sm font-bold uppercase tracking-wider">— Provérbios 31:10</p>
+                </div>
+
+                <p>Ao usar uma peça Noriah, lembre-se da sua verdadeira identidade como filha amada de Deus e da essência única que existe em você.</p>
+                
+                <p className="font-serif text-xl italic mt-12 text-[#1F364C]">Noriah Semijoias — mais que acessórios, elegância que revela seu valor. ✨</p>
+              </div>
+              
+              <div className="mt-10 flex justify-center border-t pt-10">
+                <button 
+                  onClick={() => setIsHistoryOpen(false)}
+                  className="px-10 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105"
+                  style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
+                >
+                  Voltar ao site
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
