@@ -101,7 +101,7 @@ function ProductCard({ products, colors, onZoom }) {
           {products.map((p, idx) => (
             <div key={idx} className="flex justify-between items-baseline gap-2 pb-1 border-b border-black/5 last:border-0">
               <span className="text-[10px] uppercase tracking-wider opacity-60">
-                {hasMultiple && uniqueNames.length > 1 ? p.name.split(' ').pop() : ''} {p.bath}
+                {hasMultiple && uniqueNames.length > 1 ? p.name.replace(/Colar |Chocker |Brinco |Anel |Pulseira |Bracelete |Conj. /g, '') : ''} {p.bath}
               </span>
               <span className="font-semibold text-sm whitespace-nowrap">R$ {p.price.toFixed(2).replace('.', ',')}</span>
             </div>
