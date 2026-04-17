@@ -437,10 +437,11 @@ export default function App() {
                 e.preventDefault();
                 setNewsletterStatus('loading');
                 try {
+                  const { ip } = await fetch('https://api.ipify.org?format=json').then(r => r.json()).catch(() => ({ ip: null }));
                   const res = await fetch('https://n8n.demuthlab.cloud/webhook/mail', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: newsletterEmail }),
+                    body: JSON.stringify({ email: newsletterEmail, ip }),
                   });
                   setNewsletterStatus(res.ok ? 'success' : 'error');
                 } catch {
