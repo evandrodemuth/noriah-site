@@ -40,7 +40,7 @@ const products = [
   { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: 'fotos/BRINCO ZIRCONIA_RO.jpg' },
   { id: 'BRO021OU', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: 'fotos/BRINCO PEROLA CASCATA.jpg' },
   { id: 'BRA002RO', category: 'BRACELETE', name: 'Bracelete Liso', bath: 'Ródio', price: 174.42, image: 'fotos/BRACELETE LARGO OND_RO.jpg' },
-  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: 'fotos/BRACELETE NÓ_OU.JPG' },
+  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: 'fotos/BRACELETE.jpg' },
   { id: 'BRA004OU', category: 'BRACELETE', name: 'Aparador Liso', bath: 'Ouro', price: 124.42, image: 'fotos/BRACELETE APARA_OU.jpg' },
   { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: 'fotos/BRACELETE LARGO_OU.jpg' },
   { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: 'fotos/BRACELETE ONDULADO_ROOU.jpg' },
