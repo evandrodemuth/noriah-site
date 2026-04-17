@@ -123,6 +123,7 @@ export default function App() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [zoomImage, setZoomImage] = useState(null); // { url, title }
   const [isZoomed, setIsZoomed] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
   const heroSlides = [
     {
@@ -739,17 +740,24 @@ export default function App() {
               <X size={24} />
             </button>
 
-            {/* Image Container with Zoom logic */}
+            {/* Image Container with Zoom and Pan logic */}
             <div 
               className={`relative overflow-hidden transition-all duration-500 rounded-lg shadow-2xl ${isZoomed ? 'w-full h-full' : 'max-w-[90vw] max-h-[80vh]'}`}
               onClick={() => setIsZoomed(!isZoomed)}
+              onMouseMove={(e) => {
+                if (!isZoomed) return;
+                const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+                const x = ((e.clientX - left) / width) * 100;
+                const y = ((e.clientY - top) / height) * 100;
+                setMousePos({ x, y });
+              }}
             >
               <img 
                 src={import.meta.env.BASE_URL + encodeURI(zoomImage.url)} 
                 alt={zoomImage.title}
-                className={`w-full h-full transition-transform duration-500 ease-out cursor-pointer ${isZoomed ? 'object-contain scale-150' : 'object-contain'}`}
+                className={`w-full h-full transition-transform duration-300 ease-out cursor-pointer ${isZoomed ? 'object-contain scale-[2.5]' : 'object-contain'}`}
                 style={{ 
-                  transformOrigin: 'center center',
+                  transformOrigin: isZoomed ? `${mousePos.x}% ${mousePos.y}%` : 'center center',
                 }}
               />
             </div>
