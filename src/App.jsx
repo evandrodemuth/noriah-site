@@ -40,7 +40,7 @@ const products = [
   { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: 'fotos/BRINCO ZIRCONIA_RO.jpg' },
   { id: 'BRO021OU', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: 'fotos/BRINCO PEROLA CASCATA.jpg' },
   { id: 'BRA002RO', category: 'BRACELETE', name: 'Bracelete Liso', bath: 'Ródio', price: 174.42, image: 'fotos/BRACELETE LARGO OND_RO.jpg' },
-  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: 'fotos/BRACELETE NÓ_OU.JPG' },
+  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: 'fotos/BRACELETE NÓ_OU.JPG' },
   { id: 'BRA004OU', category: 'BRACELETE', name: 'Aparador Liso', bath: 'Ouro', price: 124.42, image: 'fotos/BRACELETE APARA_OU.jpg' },
   { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: 'fotos/BRACELETE LARGO_OU.jpg' },
   { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: 'fotos/BRACELETE ONDULADO_ROOU.jpg' },
@@ -52,14 +52,14 @@ const products = [
   { id: 'AN005OU', category: 'ANEL', name: 'Regulável Liso', bath: 'Ouro', price: 98.42, image: 'fotos/ANEL REGULAVEL LISO_OU.jpg' },
   { id: 'AN005RO', category: 'ANEL', name: 'Regulável Liso', bath: 'Ródio', price: 113.03, image: 'fotos/ANEL REGULAVEL_RO.jpg' },
   { id: 'AN007OU', category: 'ANEL', name: 'Solitário Cristal', bath: 'Ouro', price: 123.03, image: 'fotos/ANEL SOLITARIO_OU.jpg' },
-  { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: 'fotos/ANEL CORAÇÃO_RO1.jpg' },
+  { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: 'fotos/ANEL CORAÇÃO_RO1.jpg' },
   { id: 'PUL001OU', category: 'PULSEIRA', name: '1 Pérola Orgânica', bath: 'Ouro', price: 74.42, image: 'fotos/PULSEIRA PEROLA UNICA_OU.jpg' },
   { id: 'PUL002OU', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/PULSEIRA FECHO CRAVEJADA.jpg' },
   { id: 'PUL002RO', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ródio', price: 236.42, image: 'fotos/PULSEIRA MAE_RO.jpg' },
   { id: 'CJ002RO', category: 'CONJUNTO', name: 'Conj. Gota Cravejada', bath: 'Ródio', price: 138.42, image: 'fotos/CONJ GOTA CRAVEJADA.jpg' },
   { id: 'CJ003OU', category: 'CONJUNTO', name: 'Citrino com Zircônia', bath: 'Ouro', price: 161.75, image: 'fotos/CONJUNTO CITRINO.jpg' },
-  { id: 'CJ004RO', category: 'CONJUNTO', name: 'Conj. Coração Zircônia', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
-  { id: 'CJ005RO', category: 'CONJUNTO', name: 'Conj. Coração Liso', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
+  { id: 'CJ004RO', category: 'CONJUNTO', name: 'Conj. Coração Zircônia', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
+  { id: 'CJ005RO', category: 'CONJUNTO', name: 'Conj. Coração Liso', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
 ];
 
 const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA', 'CONJUNTO'];
