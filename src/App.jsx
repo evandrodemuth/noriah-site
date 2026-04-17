@@ -4,7 +4,7 @@ import { MessageCircle, Search, Menu, X, Instagram, Diamond, ShieldCheck, Sparkl
 const WHATSAPP_NUMBER = '5500000000000'; // Substitua pelo número real
 
 const products = [
-  { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 124.42, image: 'fotos/COLAR CORDÃO BAIANO_RO.jpg' },
+  { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 124.42, image: 'fotos/COLAR CORDÃO BAIANO_RO.jpg' },
   { id: 'CO002OU', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ouro', price: 136.86, image: 'fotos/COLAR CORDAO BAIANO_OU.jpg' },
   { id: 'CO003OU', category: 'COLAR', name: 'Chocker Coração', bath: 'Ouro', price: 169.86, image: 'fotos/COLAR CORRENTE COR_OU.jpg' },
   { id: 'CO004OU', category: 'COLAR', name: 'Chocker', bath: 'Ouro', price: 124.42, image: 'fotos/BRINCO COR MAE_OU.JPG' },
