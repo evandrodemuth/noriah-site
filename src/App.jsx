@@ -98,6 +98,8 @@ export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeCategory, setActiveCategory] = useState('TODOS');
   const [searchQuery, setSearchQuery] = useState('');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState(null); // 'success' | 'error' | 'loading'
 
   const heroSlides = [
     {
@@ -431,20 +433,44 @@ export default function App() {
               </p>
             </div>
             <div className="w-full max-w-md">
-              <form className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="email" 
-                  placeholder="Seu melhor e-mail" 
-                  className="flex-1 px-6 py-4 rounded-full border border-[#1F364C]/10 text-sm focus:outline-none focus:border-[#FFD580] transition-colors"
+              <form className="flex flex-col sm:flex-row gap-3" onSubmit={async e => {
+                e.preventDefault();
+                setNewsletterStatus('loading');
+                try {
+                  const res = await fetch('https://n8n.demuthlab.cloud/webhook/mail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: newsletterEmail }),
+                  });
+                  setNewsletterStatus(res.ok ? 'success' : 'error');
+                } catch {
+                  setNewsletterStatus('error');
+                }
+              }}>
+                <input
+                  type="email"
+                  required
+                  placeholder="Seu melhor e-mail"
+                  value={newsletterEmail}
+                  onChange={e => setNewsletterEmail(e.target.value)}
+                  disabled={newsletterStatus === 'loading' || newsletterStatus === 'success'}
+                  className="flex-1 px-6 py-4 rounded-full border border-[#1F364C]/10 text-sm focus:outline-none focus:border-[#FFD580] transition-colors disabled:opacity-50"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105"
+                  disabled={newsletterStatus === 'loading' || newsletterStatus === 'success'}
+                  className="px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed"
                   style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
                 >
-                  Inscrever
+                  {newsletterStatus === 'loading' ? 'Enviando...' : newsletterStatus === 'success' ? 'Inscrito!' : 'Inscrever'}
                 </button>
               </form>
+              {newsletterStatus === 'success' && (
+                <p className="mt-3 text-xs text-green-600 font-medium">Obrigada! Você receberá nossas novidades em breve.</p>
+              )}
+              {newsletterStatus === 'error' && (
+                <p className="mt-3 text-xs text-red-500 font-medium">Algo deu errado. Tente novamente.</p>
+              )}
               <p className="mt-4 text-[10px] opacity-40 text-center sm:text-left">
                 Ao se inscrever, você concorda com nossa Política de Privacidade.
               </p>
