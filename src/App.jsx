@@ -65,7 +65,7 @@ const products = [
 const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA', 'CONJUNTO'];
 const CATEGORY_LABELS = { TODOS: 'Todos', COLAR: 'Colares', BRINCO: 'Brincos', BRACELETE: 'Braceletes', ANEL: 'Anéis', PULSEIRA: 'Pulseiras', CONJUNTO: 'Conjuntos' };
 
-function ProductCard({ products, colors }) {
+function ProductCard({ products, colors, onZoom }) {
   const mainProduct = products[0];
   const hasMultiple = products.length > 1;
   const uniqueNames = [...new Set(products.map(p => p.name))];
@@ -81,7 +81,8 @@ function ProductCard({ products, colors }) {
         <img
           src={import.meta.env.BASE_URL + encodeURI(mainProduct.image)}
           alt={displayName}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          onClick={() => onZoom(mainProduct.image, displayName)}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=60'; }}
         />
         <a
@@ -120,6 +121,8 @@ export default function App() {
   const [newsletterStatus, setNewsletterStatus] = useState(null); // 'success' | 'error' | 'loading'
   const [isPolicyOpen, setIsPolicyOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [zoomImage, setZoomImage] = useState(null); // { url, title }
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const heroSlides = [
     {
@@ -419,7 +422,15 @@ export default function App() {
               );
               return matchesCategory && matchesSearch;
             }).map((group, idx) => (
-              <ProductCard key={idx} products={group} colors={colors} />
+              <ProductCard 
+                key={idx} 
+                products={group} 
+                colors={colors} 
+                onZoom={(url, title) => {
+                  setZoomImage({ url, title });
+                  setIsZoomed(false);
+                }} 
+              />
             ))}
           </div>
         </div>
@@ -706,6 +717,51 @@ export default function App() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Image Zoom Modal */}
+      {zoomImage && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fadeIn transition-all duration-300">
+          <div className="relative w-full h-full flex flex-col items-center justify-center p-4">
+            {/* Header info */}
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white text-center z-10 pointer-events-none">
+              <h3 className="text-xl font-serif italic mb-1">{zoomImage.title}</h3>
+              <p className="text-[10px] uppercase tracking-[0.3em] opacity-60">Clique na imagem para dar zoom</p>
+            </div>
+
+            {/* Close Button */}
+            <button 
+              onClick={() => setZoomImage(null)}
+              className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Image Container with Zoom logic */}
+            <div 
+              className={`relative overflow-hidden transition-all duration-500 rounded-lg shadow-2xl ${isZoomed ? 'w-full h-full' : 'max-w-[90vw] max-h-[80vh]'}`}
+              onClick={() => setIsZoomed(!isZoomed)}
+            >
+              <img 
+                src={import.meta.env.BASE_URL + encodeURI(zoomImage.url)} 
+                alt={zoomImage.title}
+                className={`w-full h-full transition-transform duration-500 ease-out cursor-pointer ${isZoomed ? 'object-contain scale-150' : 'object-contain'}`}
+                style={{ 
+                  transformOrigin: 'center center',
+                }}
+              />
+            </div>
+
+            {/* Zoom Indicator/Toggle */}
+            <button 
+              onClick={() => setIsZoomed(!isZoomed)}
+              className="mt-8 px-6 py-2 bg-white text-[#1F364C] text-[10px] font-bold uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-lg flex items-center gap-2"
+            >
+              <Search size={14} />
+              {isZoomed ? 'Retornar' : 'Ampliar Detalhes'}
+            </button>
           </div>
         </div>
       )}
