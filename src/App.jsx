@@ -406,12 +406,18 @@ export default function App() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
             {Object.values(products.reduce((acc, p) => {
-              if ((activeCategory === 'TODOS' || p.category === activeCategory) && p.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-                if (!acc[p.image]) acc[p.image] = [];
-                acc[p.image].push(p);
-              }
+              if (!acc[p.image]) acc[p.image] = [];
+              acc[p.image].push(p);
               return acc;
-            }, {})).map((group, idx) => (
+            }, {})).filter(group => {
+              const matchesCategory = activeCategory === 'TODOS' || group.some(p => p.category === activeCategory);
+              const matchesSearch = group.some(p => 
+                p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                p.bath.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                p.id.toLowerCase().includes(searchQuery.toLowerCase())
+              );
+              return matchesCategory && matchesSearch;
+            }).map((group, idx) => (
               <ProductCard key={idx} products={group} colors={colors} />
             ))}
           </div>
