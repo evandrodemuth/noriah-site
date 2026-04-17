@@ -9,6 +9,7 @@ const products = [
   { id: 'CO003OU', category: 'COLAR', name: 'Chocker Coração', bath: 'Ouro', price: 169.86, image: 'fotos/COLAR CORRENTE COR_OU.jpg' },
   { id: 'CO004OU', category: 'COLAR', name: 'Chocker', bath: 'Ouro', price: 124.42, image: 'fotos/BRINCO COR MAE_OU.JPG' },
   { id: 'CO005RO', category: 'COLAR', name: 'Chocker Fita', bath: 'Ródio', price: 114.42, image: 'fotos/COLAR FITA_ROOU2.JPG' },
+  { id: 'CO005OU', category: 'COLAR', name: 'Chocker Fita', bath: 'Ouro', price: 144.42, image: 'fotos/COLAR FITA_ROOU2.JPG' },
   { id: 'CO006RO', category: 'COLAR', name: 'Colar Riviera', bath: 'Ródio', price: 308.03, image: 'fotos/COLAR RIVEIRA_RO.jpg' },
   { id: 'CO008RO', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ródio', price: 276.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg' },
   { id: 'CO008OU', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ouro', price: 246.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_OU.jpg' },
