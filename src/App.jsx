@@ -4,62 +4,62 @@ import { MessageCircle, Search, Menu, X, Instagram, Diamond, ShieldCheck, Sparkl
 const WHATSAPP_NUMBER = '5500000000000'; // Substitua pelo número real
 
 const products = [
-  { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 124.42, image: 'fotos/COLAR CORDÃO BAIANO_RO.jpg' },
-  { id: 'CO002OU', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ouro', price: 136.86, image: 'fotos/COLAR CORDAO BAIANO_OU.jpg' },
-  { id: 'CO003OU', category: 'COLAR', name: 'Chocker Coração', bath: 'Ouro', price: 169.86, image: 'fotos/COLAR CORRENTE COR_OU.jpg' },
-  { id: 'CO004OU', category: 'COLAR', name: 'Chocker', bath: 'Ouro', price: 124.42, image: 'fotos/BRINCO COR MAE_OU.JPG' },
-  { id: 'CO005RO', category: 'COLAR', name: 'Chocker Fita', bath: 'Ródio', price: 114.42, image: 'fotos/COLAR FITA_ROOU2.JPG' },
-  { id: 'CO005OU', category: 'COLAR', name: 'Chocker Fita', bath: 'Ouro', price: 114.42, image: 'fotos/COLAR FITA_ROOU2.JPG' },
-  { id: 'CO006RO', category: 'COLAR', name: 'Colar Riviera', bath: 'Ródio', price: 308.03, image: 'fotos/COLAR RIVEIRA_RO.jpg' },
-  { id: 'CO008RO', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ródio', price: 276.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg' },
-  { id: 'CO008OU', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ouro', price: 246.42, image: 'fotos/COLAR FECHO ZIRCONIA MAE_OU.jpg' },
-  { id: 'CO009OU', category: 'COLAR', name: 'Colar Grumet', bath: 'Ouro', price: 180.42, image: 'fotos/COLAR TRANÇADO E PEROLA_OU.jpg' },
-  { id: 'CO010OU', category: 'COLAR', name: 'Chocker Pérola Orgânica', bath: 'Ouro', price: 125.86, image: 'fotos/COLAR TRANÇADO E PEROLA_OU.jpg' },
-  { id: 'CO011RO', category: 'COLAR', name: 'Colar Coração', bath: 'Ródio', price: 136.42, image: 'fotos/COLAR COR_RO.jpg' },
-  { id: 'CO012OU', category: 'COLAR', name: 'Colar Pérola Orgânica', bath: 'Ouro', price: 142.42, image: 'fotos/COLAR PEROLA ORGANICA UNICA_OU.jpg' },
-  { id: 'BRO002OU', category: 'BRINCO', name: 'Brinco Cravejado Zircônia', bath: 'Ouro', price: 136.86, image: 'fotos/BRINCO MEIA ARGOLA ZIRCONIA_OU.jpg' },
-  { id: 'BRO003OU', category: 'BRINCO', name: 'Brinco', bath: 'Ouro', price: 110.46, image: 'fotos/BRINCO COR MAE_OU.JPG' },
-  { id: 'BRO003RO', category: 'BRINCO', name: 'Brinco', bath: 'Ródio', price: 121.46, image: 'fotos/BRINCO COR MAE_RO.jpg' },
-  { id: 'BRO004RO', category: 'BRINCO', name: 'Trio Argola', bath: 'Ródio', price: 120.42, image: 'fotos/BRINCO TRIO ARGOLA_RO.jpg' },
-  { id: 'BRO004OU', category: 'BRINCO', name: 'Trio Argola', bath: 'Ouro', price: 110.42, image: 'fotos/BRINCO TRIO ARGOLA_OU.jpg' },
-  { id: 'BRO005RO', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ródio', price: 124.42, image: 'fotos/BRINCO NÓ_ROOU.jpg' },
-  { id: 'BRO005OU', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ouro', price: 114.42, image: 'fotos/BRINCO NÓ_ROOU.jpg' },
-  { id: 'BRO006OU', category: 'BRINCO', name: 'Brinco Orgânico', bath: 'Ouro', price: 98.42, image: 'fotos/BRINCO ORGANICO_OU.jpg' },
-  { id: 'BRO007OU', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ouro', price: 108.42, image: 'fotos/BRINCO GOTA_OU.jpg' },
-  { id: 'BRO008RO', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ródio', price: 77.46, image: 'fotos/BRINCO GOTA2_RO.jpg' },
-  { id: 'BRO009OU', category: 'BRINCO', name: 'Brinco Cravejado', bath: 'Ouro', price: 125.53, image: 'fotos/BRINCO MEIA ARGOLA_OU.jpg' },
-  { id: 'BRO010OU', category: 'BRINCO', name: 'Argola Cravejada', bath: 'Ouro', price: 130.26, image: 'fotos/BRINCO ARGOLA_OU.jpg' },
-  { id: 'BRO011OU', category: 'BRINCO', name: 'Brinco Oval Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/BRINCO OVAL COM ZIRCONIA MEIO.jpg' },
-  { id: 'BRO012OU', category: 'BRINCO', name: 'Argola Quadrada', bath: 'Ouro', price: 125.86, image: 'fotos/BRINCO QUADRADO_OU.jpg' },
-  { id: 'BRO013OU', category: 'BRINCO', name: 'Brinco Cristal', bath: 'Ouro', price: 134.42, image: 'fotos/BRINCO CRISTAL_OU.jpg' },
-  { id: 'BRO014RO', category: 'BRINCO', name: 'Brinco Mini', bath: 'Ródio', price: 68.42, image: 'fotos/BRINCO COR PEQ_RO.jpg' },
-  { id: 'BRO015RO', category: 'BRINCO', name: 'Aircuf Coração', bath: 'Ródio', price: 86.42, image: 'fotos/BRINCO AIRCUF COR_RO.jpg' },
-  { id: 'BRO016RO', category: 'BRINCO', name: 'Aircuf Bola', bath: 'Ródio', price: 136.42, image: 'fotos/BRINCO AIRCUF BOLA_RO.jpg' },
-  { id: 'BRO017OU', category: 'BRINCO', name: 'Argola Pérola Orgânica', bath: 'Ródio', price: 143.03, image: 'fotos/BRINCO ARGOLA PEROLA ORGANICA_OU.jpg' },
-  { id: 'BRO018RO', category: 'BRINCO', name: 'Brinco Pequeno', bath: 'Ródio', price: 52.42, image: 'fotos/BRINCO COR MEDIO_RO.jpg' },
-  { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: 'fotos/BRINCO ZIRCONIA_RO.jpg' },
-  { id: 'BRO021OU', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: 'fotos/BRINCO PEROLA CASCATA.jpg' },
-  { id: 'BRA002RO', category: 'BRACELETE', name: 'Bracelete Liso', bath: 'Ródio', price: 174.42, image: 'fotos/BRACELETE LARGO OND_RO.jpg' },
-  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Zircônia', bath: 'Ouro', price: 138.32, image: 'fotos/BRACELETE.jpg' },
-  { id: 'BRA004OU', category: 'BRACELETE', name: 'Aparador Liso', bath: 'Ouro', price: 124.42, image: 'fotos/BRACELETE APARA_OU.jpg' },
-  { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: 'fotos/BRACELETE LARGO_OU.jpg' },
-  { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: 'fotos/BRACELETE ONDULADO_ROOU.jpg' },
-  { id: 'BRA006RO', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ródio', price: 124.42, image: 'fotos/BRACELETE ONDULADO_ROOU.jpg' },
-  { id: 'BRA007RO', category: 'BRACELETE', name: 'Bracelete Riviera Coração', bath: 'Ródio', price: 161.06, image: 'fotos/BRACELETE RIVEIRA COR_RO.jpg' },
-  { id: 'BRA008RO', category: 'BRACELETE', name: 'Bracelete Largo Ondulado', bath: 'Ródio', price: 184.42, image: 'fotos/BRACELETE GRANDE ONDULADO_RO.jpg' },
-  { id: 'AN003RO', category: 'ANEL', name: 'Regulável com Zircônia', bath: 'Ródio', price: 118.03, image: 'fotos/ANEL ZIRCONIA_ROOU.jpg' },
-  { id: 'AN003OU', category: 'ANEL', name: 'Regulável com Zircônia', bath: 'Ouro', price: 105.53, image: 'fotos/ANEL ZIRCONIA_ROOU.jpg' },
-  { id: 'AN005OU', category: 'ANEL', name: 'Regulável Liso', bath: 'Ouro', price: 98.42, image: 'fotos/ANEL REGULAVEL LISO_OU.jpg' },
-  { id: 'AN005RO', category: 'ANEL', name: 'Regulável Liso', bath: 'Ródio', price: 113.03, image: 'fotos/ANEL REGULAVEL_RO.jpg' },
-  { id: 'AN007OU', category: 'ANEL', name: 'Solitário Cristal', bath: 'Ouro', price: 123.03, image: 'fotos/ANEL SOLITARIO_OU.jpg' },
-  { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: 'fotos/ANEL CORAÇÃO_RO1.jpg' },
-  { id: 'PUL001OU', category: 'PULSEIRA', name: '1 Pérola Orgânica', bath: 'Ouro', price: 74.42, image: 'fotos/PULSEIRA PEROLA UNICA_OU.jpg' },
-  { id: 'PUL002OU', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/PULSEIRA FECHO CRAVEJADA.jpg' },
-  { id: 'PUL002RO', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ródio', price: 236.42, image: 'fotos/PULSEIRA MAE_RO.jpg' },
-  { id: 'CJ002RO', category: 'CONJUNTO', name: 'Conj. Gota Cravejada', bath: 'Ródio', price: 138.42, image: 'fotos/CONJ GOTA CRAVEJADA.jpg' },
-  { id: 'CJ003OU', category: 'CONJUNTO', name: 'Citrino com Zircônia', bath: 'Ouro', price: 161.75, image: 'fotos/CONJUNTO CITRINO.jpg' },
-  { id: 'CJ004RO', category: 'CONJUNTO', name: 'Conj. Coração Zircônia', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
-  { id: 'CJ005RO', category: 'CONJUNTO', name: 'Conj. Coração Liso', bath: 'Ródio', price: 124.42, image: 'fotos/CONJUNTO CORAÇÃO ZIRCONIA E LISO.jpg' },
+  { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 136.86, image: 'fotos/COLAR_CORDAO_BAIANO_CO002RO.jpg' },
+  { id: 'CO003OU', category: 'COLAR', name: 'Chocker Coração', bath: 'Ouro', price: 169.86, image: 'fotos/COLAR_CHOCKER_CORACAO_CO003OU.jpg' },
+  { id: 'BRA002RO', category: 'BRACELETE', name: 'Bracelete Liso', bath: 'Ródio', price: 174.42, image: 'fotos/BRACELETE_LARGO_LISO_BRA002RO.jpg' },
+  { id: 'BRO002OU', category: 'BRINCO', name: 'Brinco Ear Hook', bath: 'Ouro', price: 136.86, image: 'fotos/BRINCO_EAR_HOOK_BRO002OU.jpg' },
+  { id: 'PUL001OU', category: 'PULSEIRA', name: 'Pulseira Pérola Orgânica', bath: 'Ouro', price: 93.03, image: 'fotos/PULSEIRA_PEROLA_ORGANICA_PUL001OU.jpg' },
+  { id: 'CO004OU', category: 'COLAR', name: 'Colar Pérola c/ Coração', bath: 'Ouro', price: 124.42, image: 'fotos/BRINCO_CORACAO_BRO003OU_COLAR_PEROLA_CORACAO_CO004OU.jpg' },
+  { id: 'CO005RO', category: 'COLAR', name: 'Chocker Fita', bath: 'Ródio', price: 114.42, image: 'fotos/COLAR_FITA_CO005RO_CO007OU.jpg' },
+  { id: 'CO006RO', category: 'COLAR', name: 'Colar Riviera', bath: 'Ródio', price: 308.03, image: 'fotos/COLAR_RIVEIRA_CO008RO.jpg' },
+  { id: 'CO007OU', category: 'COLAR', name: 'Chocker Fita', bath: 'Ouro', price: 114.42, image: 'fotos/COLAR_FITA_CO005RO_CO007OU.jpg' },
+  { id: 'CO008RO', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ródio', price: 276.42, image: 'fotos/COLAR_FECHO_CRAVEJADO_CO008RO.jpg' },
+  { id: 'CO008OU', category: 'COLAR', name: 'Colar Fecho Cravejado', bath: 'Ouro', price: 246.42, image: 'fotos/COLAR_FECHO_CRAVEJADO_CO008OU.jpg' },
+  { id: 'CO009OU', category: 'COLAR', name: 'Colar Grumet', bath: 'Ouro', price: 180.42, image: 'fotos/COLAR_GRUMET_CO009OU_CHOCKER_PEROLA_ORGANICA_CO010OU.jpg' },
+  { id: 'CO010OU', category: 'COLAR', name: 'Chocker Pérola Orgânica', bath: 'Ouro', price: 125.86, image: 'fotos/COLAR_GRUMET_CO009OU_CHOCKER_PEROLA_ORGANICA_CO010OU.jpg' },
+  { id: 'CO011RO', category: 'COLAR', name: 'Colar Coração', bath: 'Ródio', price: 136.42, image: 'fotos/COLAR_CORACAO_LISO_CO011RO.jpg' },
+  { id: 'CO002OU', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ouro', price: 125.86, image: 'fotos/COLAR_CORDAO_BAIANO_CO002OU.jpg' },
+  { id: 'CO012OU', category: 'COLAR', name: 'Colar Pérola Orgânica', bath: 'Ouro', price: 105.53, image: 'fotos/COLAR_PEROLA_ORGANICA_UNICA_CO012OU.jpg' },
+  { id: 'CJ002RO', category: 'CONJUNTO', name: 'Conj Gota Cravejada', bath: 'Ródio', price: 138.42, image: 'fotos/CONJ_GOTA_CRAVEJADA_ROSA_CJ002RO.jpg' },
+  { id: 'CJ003OU', category: 'CONJUNTO', name: 'Conj Gota Citrino', bath: 'Ouro', price: 161.75, image: 'fotos/CONJ_GOTA_CITRINO_CJ003OU.jpg' },
+  { id: 'CJ004RO', category: 'CONJUNTO', name: 'Conj Coração Zirconia', bath: 'Ródio', price: 124.42, image: 'fotos/CONJ_CORACAO_ZIRCONIA_CJ004RO.jpg' },
+  { id: 'CJ005RO', category: 'CONJUNTO', name: 'Conj Coração Liso', bath: 'Ródio', price: 124.42, image: 'fotos/CONJ_CORACAO_LISO_CJ005RO.jpg' },
+  { id: 'AN003RO', category: 'ANEL', name: 'Anel Regulável Micro Zircônia', bath: 'Ródio', price: 118.03, image: 'fotos/ANEL_ZIRCONIA_AN003RO_AN003OU.jpg' },
+  { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: 'fotos/ANEL_CRISTAL_AN008RO.jpg' },
+  { id: 'AN005RO', category: 'ANEL', name: 'Regulável Liso', bath: 'Ródio', price: 113.03, image: 'fotos/ANEL_REGULAVEL_AN005RO.jpg' },
+  { id: 'AN009OU', category: 'ANEL', name: 'Regulável Liso', bath: 'Ouro', price: 98.42, image: 'fotos/ANEL_REGULAVEL_LISO_AN009OU.jpg' },
+  { id: 'AN007OU', category: 'ANEL', name: 'Anel Solitário', bath: 'Ouro', price: 123.03, image: 'fotos/ANEL_SOLITARIO_AN007OU.jpg' },
+  { id: 'AN003OU', category: 'ANEL', name: 'Anel Regulável Micro Zircônia', bath: 'Ouro', price: 105.53, image: 'fotos/ANEL_ZIRCONIA_AN003RO_AN003OU.jpg' },
+  { id: 'PUL002OU', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/PULSEIRA_FECHO_CRAVEJADO_PUL002OU.jpg' },
+  { id: 'PUL002RO', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ródio', price: 236.42, image: 'fotos/PULSEIRA_FECHO_CRAVEJADO_PUL002RO.jpg' },
+  { id: 'BRO003OU', category: 'BRINCO', name: 'Brinco Coração', bath: 'Ouro', price: 110.46, image: 'fotos/BRINCO_CORACAO_BRO003OU_COLAR_PEROLA_CORACAO_CO004OU.jpg' },
+  { id: 'BRO003RO', category: 'BRINCO', name: 'Brinco Coração', bath: 'Ródio', price: 121.46, image: 'fotos/BRINCO_CORACAO_BRO003RO.jpg' },
+  { id: 'BRO004RO', category: 'BRINCO', name: 'Trio Argola', bath: 'Ródio', price: 132.46, image: 'fotos/BRINCO_TRIO_ARGOLA_BRO004RO.jpg' },
+  { id: 'BRO004OU', category: 'BRINCO', name: 'Trio Argola', bath: 'Ouro', price: 121.46, image: 'fotos/BRINCO_TRIO_ARGOLA_BRO004OU.jpg' },
+  { id: 'BRO005RO', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ródio', price: 124.42, image: 'fotos/BRINCO_NO_BRO005RO_BRO005OU.jpg' },
+  { id: 'BRO005OU', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ouro', price: 114.42, image: 'fotos/BRINCO_NO_BRO005RO_BRO005OU.jpg' },
+  { id: 'BRO006OU', category: 'BRINCO', name: 'Brinco Orgânico', bath: 'Ouro', price: 98.42, image: 'fotos/BRINCO_ORGANICO_BRO006OU.jpg' },
+  { id: 'BRO007OU', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ouro', price: 108.42, image: 'fotos/BRINCO_GOTA_BRO007OU.jpg' },
+  { id: 'BRO008RO', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ródio', price: 77.46, image: 'fotos/BRINCO_GOTA_BRO008RO.jpg' },
+  { id: 'BRO009OU', category: 'BRINCO', name: 'Brinco Cravejado', bath: 'Ouro', price: 125.53, image: 'fotos/BRINCO_MEIA_ARGOLA_BRO009OU.jpg' },
+  { id: 'BRO010OU', category: 'BRINCO', name: 'Argola Cravejada', bath: 'Ouro', price: 130.26, image: 'fotos/BRINCO_ARGOLA_CRAVEJADA_BRO010OU.jpg' },
+  { id: 'BRO011OU', category: 'BRINCO', name: 'Brinco Oval Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/BRINCO_OVAL_CRAVEJADO_BRO011OU.jpg' },
+  { id: 'BRO012OU', category: 'BRINCO', name: 'Argola Quadrada', bath: 'Ouro', price: 125.86, image: 'fotos/BRINCO_ARGOLA_QUADRADA_BRO012OU.jpg' },
+  { id: 'BRO013OU', category: 'BRINCO', name: 'Brinco Cristal', bath: 'Ouro', price: 134.42, image: 'fotos/BRINCO_CRISTAL_BRO013OU.jpg' },
+  { id: 'BRO014RO', category: 'BRINCO', name: 'Brinco Mini Coração', bath: 'Ródio', price: 68.42, image: 'fotos/BRINCO_MINI_CORACAO_BRO014RO.jpg' },
+  { id: 'BRO015RO', category: 'BRINCO', name: 'Aircuf Coração', bath: 'Ródio', price: 86.42, image: 'fotos/BRINCO_AIRCUF_CORACAO_BRO016RO.jpg' },
+  { id: 'BRO016RO', category: 'BRINCO', name: 'Aircuf Bola', bath: 'Ródio', price: 136.42, image: 'fotos/BRINCO_AIRCUF_BOLA_BRO016RO.jpg' },
+  { id: 'BRO017OU', category: 'BRINCO', name: 'Argola Pérola Orgânica', bath: 'Ródio', price: 143.03, image: 'fotos/BRINCO_ARGOLA_PEROLA_ORGANICA_BRO017OU.jpg' },
+  { id: 'BRO018RO', category: 'BRINCO', name: 'Brinco Pequeno', bath: 'Ródio', price: 52.42, image: 'fotos/BRINCO_CORACAO_PEQUENO_BRO018RO.jpg' },
+  { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: 'fotos/BRINCO_ZIRCONIA_BRO020RO.jpg' },
+  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Nó Zircônia', bath: 'Ouro', price: 184.42, image: 'fotos/BRACELETE_NO_BRA003OU.JPG' },
+  { id: 'BRA004OU', category: 'BRACELETE', name: 'Bracelete Aparador Liso', bath: 'Ouro', price: 124.42, image: 'fotos/BRACELETE_APARADOR_LISO_BRA004OU.jpg' },
+  { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: 'fotos/BRACELETE_GOTA_BRA005OU.jpg' },
+  { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: 'fotos/BRACELETE_ONDULADO_BRA006OU_BRA006RO.jpg' },
+  { id: 'BRA006RO', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ródio', price: 124.42, image: 'fotos/BRACELETE_ONDULADO_BRA006OU_BRA006RO.jpg' },
+  { id: 'BRA007RO', category: 'BRACELETE', name: 'Bracelete Riviera Coração', bath: 'Ródio', price: 161.06, image: 'fotos/BRACELETE_RIVEIRA_CORACAO_BRA007RO.jpg' },
+  { id: 'BRA008RO', category: 'BRACELETE', name: 'Bracelete Largo Liso', bath: 'Ródio', price: 184.42, image: 'fotos/BRACELETE_LARGO_LISO_BRA002RO.jpg' },
+  { id: 'BRO021RO', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: 'fotos/BRINCO_PEROLA_CASCATA_BRO021OU.jpg' },
 ];
 
 const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA', 'CONJUNTO'];
@@ -127,17 +127,17 @@ export default function App() {
 
   const heroSlides = [
     {
-      image: "fotos/COLAR RIVEIRA_RO.jpg",
+      image: "fotos/COLAR_RIVEIRA_CO008RO.jpg",
       title: "A elegância que ilumina os seus dias.",
       subtitle: "Nova Coleção Alvorecer"
     },
     {
-      image: "fotos/CONJUNTO CITRINO.jpg",
+      image: "fotos/CONJ_GOTA_CITRINO_CJ003OU.jpg",
       title: "Detalhes que contam a sua história.",
       subtitle: "Joias em Ouro 18k"
     },
     {
-      image: "fotos/COLAR FECHO ZIRCONIA MAE_RO.jpg",
+      image: "fotos/COLAR_FECHO_CRAVEJADO_CO008RO.jpg",
       title: "Sinta a exclusividade em cada peça.",
       subtitle: "Design Atemporal"
     }
@@ -342,12 +342,12 @@ export default function App() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { label: 'Colares', cat: 'COLAR', img: 'fotos/COLAR RIVEIRA_RO.jpg' },
-              { label: 'Brincos', cat: 'BRINCO', img: 'fotos/BRINCO OVAL COM ZIRCONIA MEIO.jpg' },
-              { label: 'Anéis', cat: 'ANEL', img: 'fotos/ANEL SOLITARIO_OU.jpg' },
-              { label: 'Braceletes', cat: 'BRACELETE', img: 'fotos/BRACELETE RIVEIRA COR_RO.jpg' },
-              { label: 'Pulseiras', cat: 'PULSEIRA', img: 'fotos/PULSEIRA FECHO CRAVEJADA.jpg' },
-              { label: 'Conjuntos', cat: 'CONJUNTO', img: 'fotos/CONJUNTO CITRINO.jpg' },
+              { label: 'Colares', cat: 'COLAR', img: 'fotos/COLAR_RIVEIRA_CO008RO.jpg' },
+              { label: 'Brincos', cat: 'BRINCO', img: 'fotos/BRINCO_OVAL_CRAVEJADO_BRO011OU.jpg' },
+              { label: 'Anéis', cat: 'ANEL', img: 'fotos/ANEL_SOLITARIO_AN007OU.jpg' },
+              { label: 'Braceletes', cat: 'BRACELETE', img: 'fotos/BRACELETE_RIVEIRA_CORACAO_BRA007RO.jpg' },
+              { label: 'Pulseiras', cat: 'PULSEIRA', img: 'fotos/PULSEIRA_FECHO_CRAVEJADO_PUL002OU.jpg' },
+              { label: 'Conjuntos', cat: 'CONJUNTO', img: 'fotos/CONJ_GOTA_CITRINO_CJ003OU.jpg' },
             ].map(({ label, cat, img }) => (
               <a
                 key={cat}
@@ -411,8 +411,9 @@ export default function App() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
             {Object.values(products.reduce((acc, p) => {
-              if (!acc[p.image]) acc[p.image] = [];
-              acc[p.image].push(p);
+              const groupKey = p.name; // Agrupa por nome para unir variações de banho
+              if (!acc[groupKey]) acc[groupKey] = [];
+              acc[groupKey].push(p);
               return acc;
             }, {})).filter(group => {
               const matchesCategory = activeCategory === 'TODOS' || group.some(p => p.category === activeCategory);
