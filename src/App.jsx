@@ -66,7 +66,11 @@ const CATEGORIES = ['TODOS', 'COLAR', 'BRINCO', 'BRACELETE', 'ANEL', 'PULSEIRA',
 const CATEGORY_LABELS = { TODOS: 'Todos', COLAR: 'Colares', BRINCO: 'Brincos', BRACELETE: 'Braceletes', ANEL: 'Anéis', PULSEIRA: 'Pulseiras', CONJUNTO: 'Conjuntos' };
 
 function ProductCard({ products, colors, onZoom }) {
-  const mainProduct = products[0];
+  const [imgIndex, setImgIndex] = useState(0);
+  const allImages = [...new Set(products.map(p => p.image))];
+  const hasMultipleImages = allImages.length > 1;
+  const currentImage = allImages[imgIndex];
+  
   const hasMultiple = products.length > 1;
   const uniqueNames = [...new Set(products.map(p => p.name))];
   const displayName = uniqueNames.length === 1 ? uniqueNames[0] : (uniqueNames.length > 2 ? 'Mix de Peças' : uniqueNames.join(' & '));
@@ -75,16 +79,53 @@ function ProductCard({ products, colors, onZoom }) {
   const msg = encodeURIComponent(`Olá! Tenho interesse na(s) peça(s): ${itemsString}`);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 
+  const nextImg = (e) => {
+    e.stopPropagation();
+    setImgIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImg = (e) => {
+    e.stopPropagation();
+    setImgIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
+
   return (
     <div className="group cursor-pointer">
-      <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-50 rounded-2xl">
+      <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-gray-50 rounded-2xl group">
         <img
-          src={import.meta.env.BASE_URL + encodeURI(mainProduct.image)}
+          src={import.meta.env.BASE_URL + encodeURI(currentImage)}
           alt={displayName}
-          onClick={() => onZoom(mainProduct.image, displayName)}
+          onClick={() => onZoom(currentImage, displayName)}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=60'; }}
         />
+        
+        {hasMultipleImages && (
+          <>
+            <button 
+              onClick={prevImg}
+              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 rounded-full text-[#1F364C] opacity-0 group-hover:opacity-100 transition-all hover:bg-white"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button 
+              onClick={nextImg}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 rounded-full text-[#1F364C] opacity-0 group-hover:opacity-100 transition-all hover:bg-white"
+            >
+              <ChevronRight size={16} />
+            </button>
+            
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+              {allImages.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${i === imgIndex ? 'bg-[#1F364C] w-3' : 'bg-white'}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
         <a
           href={waLink}
           target="_blank"
