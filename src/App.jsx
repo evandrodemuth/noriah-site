@@ -257,10 +257,10 @@ export default function App() {
               <button className="p-2 text-[#1F364C] hover:text-[#FFD580] transition-colors hidden md:block">
                 <Search size={20} />
               </button>
-              <button className="p-2 text-[#1F364C] hover:text-[#FFD580] transition-colors relative flex items-center gap-2">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Vi os produtos da Noriah Semijoias e gostaria de saber mais. Podem me ajudar?')}`} target="_blank" rel="noopener noreferrer" className="p-2 text-[#1F364C] hover:text-[#FFD580] transition-colors relative flex items-center gap-2">
                 <MessageCircle size={20} />
                 <span className="hidden md:inline text-xs font-medium uppercase tracking-widest">Contato</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
