@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Search, Menu, X, Instagram, Diamond, ShieldCheck, Sparkles, Star, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '5500000000000'; // Substitua pelo número real
+const WHATSAPP_NUMBER = '5511953463420';
 
 const products = [
   { id: 'CO002RO', category: 'COLAR', name: 'Cordão Baiano', bath: 'Ródio', price: 136.86, image: 'fotos/COLAR_CORDAO_BAIANO_CO002RO.jpg' },
@@ -76,7 +76,7 @@ function ProductCard({ products, colors, onZoom }) {
   const displayName = uniqueNames.length === 1 ? uniqueNames[0] : (uniqueNames.length > 2 ? 'Mix de Peças' : uniqueNames.join(' & '));
 
   const itemsString = products.map(p => `${p.name} (${p.bath}) - R$ ${p.price.toFixed(2)}`).join(' | ');
-  const msg = encodeURIComponent(`Olá! Tenho interesse na(s) peça(s): ${itemsString}`);
+  const msg = encodeURIComponent(`Olá! Vi os produtos da Noriah Semijoias e gostaria de saber mais sobre: ${itemsString}. Podem me ajudar?`);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 
   const nextImg = (e) => {
@@ -598,7 +598,7 @@ export default function App() {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest mb-6" style={{ color: colors.amareloAlvorecer }}>Atendimento</h4>
               <ul className="space-y-3 text-sm opacity-80 font-light">
-                <li><a href="#" className="hover:text-[#FFD580] transition-colors">Fale Conosco (WhatsApp)</a></li>
+                <li><a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Vi os produtos da Noriah Semijoias e gostaria de saber mais. Podem me ajudar?')}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#FFD580] transition-colors">Fale Conosco (WhatsApp)</a></li>
                 <li><a href="#" className="hover:text-[#FFD580] transition-colors">Dúvidas Frequentes</a></li>
                 <li><a href="#" className="hover:text-[#FFD580] transition-colors">Guia de Medidas</a></li>
               </ul>
