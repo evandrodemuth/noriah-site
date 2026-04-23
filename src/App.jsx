@@ -27,7 +27,7 @@ const products = [
   { id: 'AN003RO', category: 'ANEL', name: 'Anel Regulável Micro Zircônia', bath: 'Ródio', price: 118.03, image: 'fotos/ANEL_ZIRCONIA_AN003RO_AN003OU.jpg' },
   { id: 'AN008RO', category: 'ANEL', name: 'Regulável Cristal', bath: 'Ródio', price: 85.53, image: 'fotos/ANEL_CRISTAL_AN008RO.jpg' },
   { id: 'AN005RO', category: 'ANEL', name: 'Regulável Liso', bath: 'Ródio', price: 113.03, image: 'fotos/ANEL_REGULAVEL_AN005RO.jpg' },
-  { id: 'AN009OU', category: 'ANEL', name: 'Regulável Liso', bath: 'Ouro', price: 98.42, image: 'fotos/ANEL_REGULAVEL_LISO_AN009OU.jpg' },
+  { id: 'AN009OU', category: 'ANEL', name: 'Anel Regulável Simple', bath: 'Ouro', price: 98.42, image: 'fotos/ANEL_REGULAVEL_LISO_AN009OU.jpg' },
   { id: 'AN007OU', category: 'ANEL', name: 'Anel Solitário', bath: 'Ouro', price: 123.03, image: 'fotos/ANEL_SOLITARIO_AN007OU.jpg' },
   { id: 'AN003OU', category: 'ANEL', name: 'Anel Regulável Micro Zircônia', bath: 'Ouro', price: 105.53, image: 'fotos/ANEL_ZIRCONIA_AN003RO_AN003OU.jpg' },
   { id: 'PUL002OU', category: 'PULSEIRA', name: 'Pulseira Fecho Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/PULSEIRA_FECHO_CRAVEJADO_PUL002OU.jpg' },
@@ -40,25 +40,25 @@ const products = [
   { id: 'BRO005OU', category: 'BRINCO', name: 'Brinco Nó', bath: 'Ouro', price: 114.42, image: 'fotos/BRINCO_NO_BRO005RO_BRO005OU.jpg' },
   { id: 'BRO006OU', category: 'BRINCO', name: 'Brinco Orgânico', bath: 'Ouro', price: 98.42, image: 'fotos/BRINCO_ORGANICO_BRO006OU.jpg' },
   { id: 'BRO007OU', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ouro', price: 108.42, image: 'fotos/BRINCO_GOTA_BRO007OU.jpg' },
-  { id: 'BRO008RO', category: 'BRINCO', name: 'Brinco Gota', bath: 'Ródio', price: 77.46, image: 'fotos/BRINCO_GOTA_BRO008RO.jpg' },
+  { id: 'BRO008RO', category: 'BRINCO', name: 'Brinco Stone', bath: 'Ródio', price: 77.46, image: 'fotos/BRINCO_GOTA_BRO008RO.jpg' },
   { id: 'BRO009OU', category: 'BRINCO', name: 'Brinco Cravejado', bath: 'Ouro', price: 125.53, image: 'fotos/BRINCO_MEIA_ARGOLA_BRO009OU.jpg' },
   { id: 'BRO010OU', category: 'BRINCO', name: 'Argola Cravejada', bath: 'Ouro', price: 130.26, image: 'fotos/BRINCO_ARGOLA_CRAVEJADA_BRO010OU.jpg' },
   { id: 'BRO011OU', category: 'BRINCO', name: 'Brinco Oval Cravejado', bath: 'Ouro', price: 214.42, image: 'fotos/BRINCO_OVAL_CRAVEJADO_BRO011OU.jpg' },
   { id: 'BRO012OU', category: 'BRINCO', name: 'Argola Quadrada', bath: 'Ouro', price: 125.86, image: 'fotos/BRINCO_ARGOLA_QUADRADA_BRO012OU.jpg' },
   { id: 'BRO013OU', category: 'BRINCO', name: 'Brinco Cristal', bath: 'Ouro', price: 134.42, image: 'fotos/BRINCO_CRISTAL_BRO013OU.jpg' },
   { id: 'BRO014RO', category: 'BRINCO', name: 'Brinco Mini Coração', bath: 'Ródio', price: 68.42, image: 'fotos/BRINCO_MINI_CORACAO_BRO014RO.jpg' },
-  { id: 'BRO015RO', category: 'BRINCO', name: 'Aircuf Coração', bath: 'Ródio', price: 86.42, image: 'fotos/BRINCO_AIRCUF_CORACAO_BRO016RO.jpg' },
-  { id: 'BRO016RO', category: 'BRINCO', name: 'Aircuf Bola', bath: 'Ródio', price: 136.42, image: 'fotos/BRINCO_AIRCUF_BOLA_BRO016RO.jpg' },
+  { id: 'BRO015RO', category: 'BRINCO', name: 'Ear Cuff Coração', bath: 'Ródio', price: 86.42, image: 'fotos/BRINCO_AIRCUF_CORACAO_BRO016RO.jpg' },
+  { id: 'BRO016RO', category: 'BRINCO', name: 'Ear Cuff Bola', bath: 'Ródio', price: 136.42, image: 'fotos/BRINCO_AIRCUF_BOLA_BRO016RO.jpg' },
   { id: 'BRO017OU', category: 'BRINCO', name: 'Argola Pérola Orgânica', bath: 'Ródio', price: 143.03, image: 'fotos/BRINCO_ARGOLA_PEROLA_ORGANICA_BRO017OU.jpg' },
   { id: 'BRO018RO', category: 'BRINCO', name: 'Brinco Pequeno', bath: 'Ródio', price: 52.42, image: 'fotos/BRINCO_CORACAO_PEQUENO_BRO018RO.jpg' },
   { id: 'BRO020RO', category: 'BRINCO', name: 'Brinco Zircônia', bath: 'Ródio', price: 150.06, image: 'fotos/BRINCO_ZIRCONIA_BRO020RO.jpg' },
-  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Nó Zircônia', bath: 'Ouro', price: 184.42, image: 'fotos/BRACELETE_NO_BRA003OU.JPG' },
+  { id: 'BRA003OU', category: 'BRACELETE', name: 'Bracelete Nó Zircônia', bath: 'Ouro', price: 184.42, image: 'fotos/BRACELETE.jpg' },
   { id: 'BRA004OU', category: 'BRACELETE', name: 'Bracelete Aparador Liso', bath: 'Ouro', price: 124.42, image: 'fotos/BRACELETE_APARADOR_LISO_BRA004OU.jpg' },
   { id: 'BRA005OU', category: 'BRACELETE', name: 'Bracelete Gota', bath: 'Ouro', price: 164.42, image: 'fotos/BRACELETE_GOTA_BRA005OU.jpg' },
   { id: 'BRA006OU', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ouro', price: 90.66, image: 'fotos/BRACELETE_ONDULADO_BRA006OU_BRA006RO.jpg' },
   { id: 'BRA006RO', category: 'BRACELETE', name: 'Bracelete Ondulado Liso', bath: 'Ródio', price: 124.42, image: 'fotos/BRACELETE_ONDULADO_BRA006OU_BRA006RO.jpg' },
   { id: 'BRA007RO', category: 'BRACELETE', name: 'Bracelete Riviera Coração', bath: 'Ródio', price: 161.06, image: 'fotos/BRACELETE_RIVEIRA_CORACAO_BRA007RO.jpg' },
-  { id: 'BRA008RO', category: 'BRACELETE', name: 'Bracelete Largo Liso', bath: 'Ródio', price: 184.42, image: 'fotos/BRACELETE_LARGO_LISO_BRA002RO.jpg' },
+  { id: 'BRA008RO', category: 'BRACELETE', name: 'Bracelete Largo Liso', bath: 'Ródio', price: 184.42, image: 'fotos/shopping.webp' },
   { id: 'BRO021RO', category: 'BRINCO', name: 'Brinco Pérola Cascata', bath: 'Ouro', price: 147.86, image: 'fotos/BRINCO_PEROLA_CASCATA_BRO021OU.jpg' },
 ];
 
@@ -70,7 +70,7 @@ function ProductCard({ products, colors, onZoom }) {
   const allImages = [...new Set(products.map(p => p.image))];
   const hasMultipleImages = allImages.length > 1;
   const currentImage = allImages[imgIndex];
-  
+
   const hasMultiple = products.length > 1;
   const uniqueNames = [...new Set(products.map(p => p.name))];
   const displayName = uniqueNames.length === 1 ? uniqueNames[0] : (uniqueNames.length > 2 ? 'Mix de Peças' : uniqueNames.join(' & '));
@@ -99,26 +99,26 @@ function ProductCard({ products, colors, onZoom }) {
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=60'; }}
         />
-        
+
         {hasMultipleImages && (
           <>
-            <button 
+            <button
               onClick={prevImg}
               className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 rounded-full text-[#1F364C] opacity-0 group-hover:opacity-100 transition-all hover:bg-white"
             >
               <ChevronLeft size={16} />
             </button>
-            <button 
+            <button
               onClick={nextImg}
               className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 rounded-full text-[#1F364C] opacity-0 group-hover:opacity-100 transition-all hover:bg-white"
             >
               <ChevronRight size={16} />
             </button>
-            
+
             <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
               {allImages.map((_, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className={`w-1.5 h-1.5 rounded-full transition-all ${i === imgIndex ? 'bg-[#1F364C] w-3' : 'bg-white'}`}
                 />
               ))}
@@ -135,7 +135,7 @@ function ProductCard({ products, colors, onZoom }) {
           Consultar {hasMultiple ? 'Peças' : 'Peça'}
         </a>
       </div>
-      
+
       <div className="space-y-2">
         <h5 className="font-serif text-base leading-tight">{displayName}</h5>
         <div className="space-y-1">
@@ -203,9 +203,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans" style={{ backgroundColor: colors.calmaria, color: colors.azulNoite }}>
-      
+
       {/* Top Bar / Announcement */}
-      <div 
+      <div
         className="w-full py-2 text-center text-xs md:text-sm font-medium tracking-wider"
         style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
       >
@@ -216,10 +216,10 @@ export default function App() {
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b" style={{ borderColor: colors.calmaria }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 md:h-24">
-            
+
             {/* Mobile Menu Button */}
             <div className="flex items-center md:hidden">
-              <button 
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="p-2 -ml-2 text-[#1F364C] hover:text-[#FFD580] transition-colors"
               >
@@ -237,11 +237,11 @@ export default function App() {
             {/* Logo */}
             {/* INSTRUÇÃO: Substitua a div abaixo por uma tag <img src="Fundo_Calmaria_Logo_Noriah.svg" alt="Noriah" /> */}
             <div className="flex-shrink-0 flex flex-col items-center justify-center flex-1 md:flex-none cursor-pointer">
-              <img 
-                src="Fundo_Calmaria_Logo_Noriah.svg" 
-                alt="Noriah" 
-                className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_0.8px_rgba(31,54,76,0.8)]" 
-                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} 
+              <img
+                src="Fundo_Calmaria_Logo_Noriah.svg"
+                alt="Noriah"
+                className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_0.8px_rgba(31,54,76,0.8)]"
+                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
               />
               <div style={{ display: 'none' }} className="flex-col items-center justify-center">
                 <h1 className="font-serif text-3xl md:text-4xl italic tracking-wide" style={{ color: colors.azulNoite }}>
@@ -282,13 +282,13 @@ export default function App() {
       <section className="relative w-full h-[80vh] min-h-[600px] flex items-center bg-gray-100 overflow-hidden">
         {/* Carrossel de Imagens */}
         {heroSlides.map((slide, index) => (
-          <div 
+          <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
-            <img 
-              src={import.meta.env.BASE_URL + encodeURI(slide.image)} 
-              alt={slide.title} 
+            <img
+              src={import.meta.env.BASE_URL + encodeURI(slide.image)}
+              alt={slide.title}
               className="w-full h-full object-cover object-center"
             />
             {/* Overlay escuro para garantir leitura do texto */}
@@ -319,13 +319,13 @@ export default function App() {
 
         {/* Controles do Carrossel */}
         <div className="absolute bottom-10 right-10 flex space-x-4 z-10">
-          <button 
+          <button
             onClick={prevSlide}
             className="p-3 rounded-full border border-white/30 text-white hover:bg-white hover:text-[#1F364C] transition-all"
           >
             <ChevronLeft size={20} />
           </button>
-          <button 
+          <button
             onClick={nextSlide}
             className="p-3 rounded-full border border-white/30 text-white hover:bg-white hover:text-[#1F364C] transition-all"
           >
@@ -458,21 +458,21 @@ export default function App() {
               return acc;
             }, {})).filter(group => {
               const matchesCategory = activeCategory === 'TODOS' || group.some(p => p.category === activeCategory);
-              const matchesSearch = group.some(p => 
+              const matchesSearch = group.some(p =>
                 p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 p.bath.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 p.id.toLowerCase().includes(searchQuery.toLowerCase())
               );
               return matchesCategory && matchesSearch;
             }).map((group, idx) => (
-              <ProductCard 
-                key={idx} 
-                products={group} 
-                colors={colors} 
+              <ProductCard
+                key={idx}
+                products={group}
+                colors={colors}
                 onZoom={(url, title) => {
                   setZoomImage({ url, title });
                   setIsZoomed(false);
-                }} 
+                }}
               />
             ))}
           </div>
@@ -482,9 +482,9 @@ export default function App() {
       {/* Sobre a Marca */}
       <section id="sobre" className="py-0 flex flex-col md:flex-row w-full" style={{ backgroundColor: colors.azulNoite }}>
         <div className="w-full md:w-1/2 h-[500px] md:h-auto">
-          <img 
-            src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-            alt="Essência Noriah" 
+          <img
+            src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+            alt="Essência Noriah"
             className="w-full h-full object-cover"
           />
         </div>
@@ -566,13 +566,13 @@ export default function App() {
       <footer className="pt-20 pb-10" style={{ backgroundColor: colors.azulNoite, color: colors.calmaria }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            
+
             {/* Brand Col */}
             <div className="md:col-span-1">
               <div className="flex flex-col items-start cursor-pointer mb-6">
-                <img 
-                  src="Fundo_Azul_Noite_Logo_Noriah.svg" 
-                  alt="Noriah Semijoias" 
+                <img
+                  src="Fundo_Azul_Noite_Logo_Noriah.svg"
+                  alt="Noriah Semijoias"
                   className="h-24 md:h-32 w-auto object-contain drop-shadow-[0_0_0.8px_rgba(250,245,233,0.8)]"
                 />
               </div>
@@ -619,16 +619,16 @@ export default function App() {
       {isPolicyOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-[2rem] shadow-2xl relative animate-slideUp">
-            <button 
+            <button
               onClick={() => setIsPolicyOpen(false)}
               className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
               <X size={24} />
             </button>
-            
+
             <div className="p-8 md:p-12">
               <h2 className="text-3xl font-serif italic mb-8" style={{ color: colors.azulNoite }}>Garantia, Trocas e Cuidados</h2>
-              
+
               <div className="space-y-8 text-sm leading-relaxed text-[#1F364C]/80">
                 <section>
                   <h3 className="font-bold uppercase tracking-widest text-xs mb-4 text-[#1F364C] border-b pb-2">Cuidados com sua Semijoia</h3>
@@ -685,7 +685,7 @@ export default function App() {
                 <section className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h3 className="font-bold uppercase tracking-widest text-xs mb-4 text-[#1F364C]">Como solicitar</h3>
                   <p className="mb-4">Em caso de Troca ou devolução, pedimos para entrar em contato através do email <a href="mailto:contato@noriahsemijoias.com.br" className="font-bold underline">contato@noriahsemijoias.com.br</a> com os dados abaixo:</p>
-                  
+
                   <div className="bg-white p-4 rounded-lg border border-gray-200 font-mono text-xs space-y-2">
                     <p><strong>Título:</strong> Defeito ou Troca ou Devolução (colocar o motivo correto)</p>
                     <p><strong>Motivo:</strong> (ex: zircônia caiu)</p>
@@ -695,13 +695,13 @@ export default function App() {
                     <p><strong>Cod produto:</strong></p>
                     <p><strong>Foto do produto com defeito:</strong></p>
                   </div>
-                  
+
                   <p className="mt-4 text-xs italic opacity-60">Prazo de retorno em até 48h úteis.</p>
                 </section>
               </div>
-              
+
               <div className="mt-10 flex justify-center">
-                <button 
+                <button
                   onClick={() => setIsPolicyOpen(false)}
                   className="px-10 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105"
                   style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
@@ -718,40 +718,40 @@ export default function App() {
       {isHistoryOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-[2rem] shadow-2xl relative animate-slideUp">
-            <button 
+            <button
               onClick={() => setIsHistoryOpen(false)}
               className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
               <X size={24} />
             </button>
-            
+
             <div className="p-8 md:p-12">
               <span className="block text-xs font-bold uppercase tracking-[0.3em] mb-4 text-[#FFD580]">Nossa História</span>
               <h2 className="text-3xl md:text-4xl font-serif italic mb-8" style={{ color: colors.azulNoite }}>A Essência Noriah</h2>
-              
+
               <div className="space-y-6 text-base leading-relaxed text-[#1F364C]/80 font-light">
                 <p>A Noriah Semijoias nasceu de uma transformação.</p>
-                
+
                 <p>Em um determinado momento da minha vida, escolhi pausar minha carreira para me dedicar ao que eu tinha de mais precioso: minha família, especialmente minha filha, que me ensinou e ainda me ensina sobre amor, força e propósito.</p>
-                
+
                 <p>Mas, como acontece com tantas pessoas, a vida trouxe um revés. Um inesperado divórcio marcou profundamente a minha trajetória e me levou a um tempo de dor e reconstrução.</p>
-                
+
                 <p className="font-medium text-[#1F364C]">Foi nesse processo que entendi algo que mudou tudo: o meu valor nunca esteve nas mãos de ninguém, sempre esteve em quem Deus diz que eu sou.</p>
-                
+
                 <p>Entre lágrimas e orações, encontrei em Jesus direção, amor e um novo significado para a minha história. E foi assim que a Noriah nasceu.</p>
-                
+
                 <div className="py-8 px-6 bg-[#FAF5E9] rounded-3xl border-l-4 border-[#FFD580] my-8 italic">
                   <p className="mb-4">"Mulher virtuosa, quem a achará? O seu valor muito excede ao de finas joias."</p>
                   <p className="text-sm font-bold uppercase tracking-wider">— Provérbios 31:10</p>
                 </div>
 
                 <p>Ao usar uma peça Noriah, lembre-se da sua verdadeira identidade como filha amada de Deus e da essência única que existe em você.</p>
-                
+
                 <p className="font-serif text-xl italic mt-12 text-[#1F364C]">Noriah Semijoias — mais que acessórios, elegância que revela seu valor. ✨</p>
               </div>
-              
+
               <div className="mt-10 flex justify-center border-t pt-10">
-                <button 
+                <button
                   onClick={() => setIsHistoryOpen(false)}
                   className="px-10 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all hover:scale-105"
                   style={{ backgroundColor: colors.azulNoite, color: colors.amareloAlvorecer }}
@@ -775,7 +775,7 @@ export default function App() {
             </div>
 
             {/* Close Button */}
-            <button 
+            <button
               onClick={() => setZoomImage(null)}
               className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20"
             >
@@ -783,7 +783,7 @@ export default function App() {
             </button>
 
             {/* Image Container with Zoom and Pan logic */}
-            <div 
+            <div
               className={`relative overflow-hidden transition-all duration-500 rounded-lg shadow-2xl ${isZoomed ? 'w-full h-full' : 'max-w-[90vw] max-h-[80vh]'}`}
               onClick={() => setIsZoomed(!isZoomed)}
               onMouseMove={(e) => {
@@ -794,18 +794,18 @@ export default function App() {
                 setMousePos({ x, y });
               }}
             >
-              <img 
-                src={import.meta.env.BASE_URL + encodeURI(zoomImage.url)} 
+              <img
+                src={import.meta.env.BASE_URL + encodeURI(zoomImage.url)}
                 alt={zoomImage.title}
                 className={`w-full h-full transition-transform duration-300 ease-out cursor-pointer ${isZoomed ? 'object-contain scale-[2.5]' : 'object-contain'}`}
-                style={{ 
+                style={{
                   transformOrigin: isZoomed ? `${mousePos.x}% ${mousePos.y}%` : 'center center',
                 }}
               />
             </div>
 
             {/* Zoom Indicator/Toggle */}
-            <button 
+            <button
               onClick={() => setIsZoomed(!isZoomed)}
               className="mt-8 px-6 py-2 bg-white text-[#1F364C] text-[10px] font-bold uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-lg flex items-center gap-2"
             >
