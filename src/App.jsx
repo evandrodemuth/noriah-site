@@ -75,7 +75,7 @@ function ProductCard({ products, colors, onZoom }) {
   const uniqueNames = [...new Set(products.map(p => p.name))];
   const displayName = uniqueNames.length === 1 ? uniqueNames[0] : (uniqueNames.length > 2 ? 'Mix de Peças' : uniqueNames.join(' & '));
 
-  const msg = encodeURIComponent(`Olá! Vi os produtos da Noriah Semijoias e gostaria de saber mais. Podem me ajudar?`);
+  const msg = encodeURIComponent(`Olá! Vi o produto "${displayName}" no site da Noriah Semijoias e gostaria de saber mais. Podem me ajudar?`);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 
   const nextImg = (e) => {
